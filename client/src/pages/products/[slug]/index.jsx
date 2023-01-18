@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Card } from "flowbite-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -14,8 +15,13 @@ const Details = () => {
  
    if (error) <p>Loading failed...</p>;
     if (!data) <h1>Loading...</h1>;
+    console.log(data);
   
-  return <div>{JSON.stringify(data)}</div>;
+  return <div>
+    <div className="max-w-sm">
+ {JSON.stringify(data)}
+</div>
+  </div>;
 };
 
 export default Details;
