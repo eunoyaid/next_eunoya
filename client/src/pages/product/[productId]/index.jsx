@@ -1,19 +1,37 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 
 const Product = () => {
     const router = useRouter();
     const { productId } = router.query;
+    const [data, setData] = useState([]);
   
-    const address = `https://dummyjson.com/products/${productId}`;
-    const fetcher = async (url) => await axios.get(url).then((res) => res.data);
-    const { data, error } = useSWR(address, fetcher);
+    // const address = `https://dummyjson.com/products/${productId}`;
+    // const fetcher = async (url) => await axios.get(url).then((res) => res.data);
+    // const { data, error } = useSWR(address, fetcher);
    
-     if (error) <p>Loading failed...</p>;
-      if (!data) <h1>Loading...</h1>;
-      console.log(data);
+    //  if (error) <p>Loading failed...</p>;
+    //   if (!data) <h1>Loading...</h1>;
+    //   console.log(data);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const res = await axios.get(`https://dummyjson.com/products/${productId}`);
+          setData(res.data);
+          console.log(res.data);
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+      fetchData();
+    }, []);
+
+
+
+
   return (  
 
        <div className="bg-white">
@@ -44,23 +62,25 @@ const Product = () => {
            </ol>
          </nav>
      
-     
-         <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-           <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
-             <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg" alt="Two each of gray, white, and black shirts laying flat." className="h-full w-full object-cover object-center"/>
-           </div>
-           <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-             <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-               <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg" alt="Model wearing plain black basic tee." className="h-full w-full object-cover object-center"/>
-             </div>
-             <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-               <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg" alt="Model wearing plain gray basic tee." className="h-full w-full object-cover object-center"/>
-             </div>
-           </div>
-           <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
-             <img src= {data.thumbnail} alt="Model wearing plain white basic tee." className="h-full w-full object-cover object-center"/>
-           </div>
-         </div>
+   
+     <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
+     <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
+       <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg" alt="Two each of gray, white, and black shirts laying flat." className="h-full w-full object-cover object-center"/>
+     </div>
+     <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+       <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+         <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg" alt="Model wearing plain black basic tee." className="h-full w-full object-cover object-center"/>
+       </div>
+       <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+         <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg" alt="Model wearing plain gray basic tee." className="h-full w-full object-cover object-center"/>
+       </div>
+     </div>
+     <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
+       <img src= {data.thumbnail} alt="Model wearing plain white basic tee." className="h-full w-full object-cover object-center"/>
+     </div>
+   </div>
+    
+         
      
      
          <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">

@@ -3,14 +3,13 @@ import useSWR from "swr";
 import axios from "axios";
 import Link from "next/link";
 
-const Products = () => {
+const FavoriteProduct = () => {
   const address = `https://dummyjson.com/products`;
   const fetcher = async (url) =>
     await axios.get(url).then((res) => res.data.products.slice(0,4));
   const { data, error } = useSWR(address, fetcher);
   let loading = !data && !error;
 
-  console.log(data);
   return (
     <div>
         <div >
@@ -53,4 +52,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default FavoriteProduct;
