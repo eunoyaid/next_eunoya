@@ -2,7 +2,7 @@ import NavbarEunoya from './navbar'
 
 
 
-export default function Layouts({ children }) {
+export default function Layout({ children }) {
   return (
     <>
       <NavbarEunoya />

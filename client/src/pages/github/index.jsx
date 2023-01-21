@@ -7,13 +7,7 @@ import SectionResult from './sectionResult';
 
 
 const Details = () => {
-    // const address = `https://jsonplaceholder.typicode.com/photos`;
-    // const fetcher = async (url) =>
-    //   await axios.get(url).then((res) => res.data.slice(0, 4));
-    // const { data, error } = useSWR(address, fetcher);
 
-    // if (error) <p>Loading failed...</p>;
-    // if (!data) <h1>Loading...</h1>;
   
     const [query, setQuery] = useState()
  

@@ -1,69 +1,623 @@
-import { Navbar, Dropdown, Avatar } from 'flowbite-react'
-import Link from 'next/link'
-import React from 'react'
+import { Navbar, Dropdown, Avatar, Button } from "flowbite-react";
+import Link from "next/link";
+import React, { useState } from "react";
 
 const NavbarEunoya = () => {
-  return (
-    <div >
-       <Navbar
-  fluid={true}
-  rounded={true}
->
-  <Navbar.Brand href="https://flowbite.com/">
-    <img
-      src="https://flowbite.com/docs/images/logo.svg"
-      className="mr-3 h-6 sm:h-9"
-      alt="Flowbite Logo"
-    />
-    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-      Flowbite
-    </span>
-  </Navbar.Brand>
-  <div className="flex md:order-2">
-    <Dropdown
-      arrowIcon={false}
-      inline={true}
-      label={<Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded={true}/>}
-    >
-      <Dropdown.Header>
-        <span className="block text-sm">
-          Bonnie Green
-        </span>
-        <span className="block truncate text-sm font-medium">
-          name@flowbite.com
-        </span>
-      </Dropdown.Header>
-      <Dropdown.Item>
-        Dashboard
-      </Dropdown.Item>
-      <Dropdown.Item>
-        Settings
-      </Dropdown.Item>
-      <Dropdown.Item>
-        Earnings
-      </Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item>
-        Sign out
-      </Dropdown.Item>
-    </Dropdown>
-    <Navbar.Toggle />
-  </div>
-  <Navbar.Collapse>
-    <Link
-      href="/"
-    
-    >
-      Home
-    </Link>
-    <Link href="/products">
-      Products
-    </Link>
-    
-  </Navbar.Collapse>
-</Navbar>
-    </div>
-  )
-}
+  const [show, setShow] = useState();
+  const [profile, setProfile] = useState();
 
-export default NavbarEunoya
+  return (
+    <div className="relative bg-white">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+          <div className="flex justify-start lg:w-0 lg:flex-1">
+            <a href="#">
+              <span className="sr-only">Your Company</span>
+              <img
+                className="h-8 w-auto sm:h-10"
+                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                alt=""
+              />
+            </a>
+          </div>
+          <div className="-my-2 -mr-2 md:hidden">
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              aria-expanded="false"
+            >
+              <span className="sr-only">Open menu</span>
+
+              <svg
+                className="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <nav className="hidden space-x-10 md:flex">
+            <div className="relative">
+              <button
+                onClick={() => setShow(!show)}
+                type="button"
+                className="text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                aria-expanded="false"
+              >
+                <span>Solutions</span>
+
+                <svg
+                  className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+              {show && (
+                <div className="absolute z-10 -ml-4 mt-3 w-screen max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
+                  <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                    <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                      <a
+                        href="#"
+                        className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                      >
+                        <svg
+                          className="h-6 w-6 flex-shrink-0 text-indigo-600"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
+                          />
+                        </svg>
+                        <div className="ml-4">
+                          <p className="text-base font-medium text-gray-900">
+                            Analytics
+                          </p>
+                          <p className="mt-1 text-sm text-gray-500">
+                            Get a better understanding of where your traffic is
+                            coming from.
+                          </p>
+                        </div>
+                      </a>
+
+                      <a
+                        href="#"
+                        className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                      >
+                        <svg
+                          className="h-6 w-6 flex-shrink-0 text-indigo-600"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59"
+                          />
+                        </svg>
+                        <div className="ml-4">
+                          <p className="text-base font-medium text-gray-900">
+                            Engagement
+                          </p>
+                          <p className="mt-1 text-sm text-gray-500">
+                            Speak directly to your customers in a more
+                            meaningful way.
+                          </p>
+                        </div>
+                      </a>
+
+                      <a
+                        href="#"
+                        className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                      >
+                        <svg
+                          className="h-6 w-6 flex-shrink-0 text-indigo-600"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
+                          />
+                        </svg>
+                        <div className="ml-4">
+                          <p className="text-base font-medium text-gray-900">
+                            Security
+                          </p>
+                          <p className="mt-1 text-sm text-gray-500">
+                            Your customers&#039; data will be safe and secure.
+                          </p>
+                        </div>
+                      </a>
+
+                      <a
+                        href="#"
+                        className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                      >
+                        <svg
+                          className="h-6 w-6 flex-shrink-0 text-indigo-600"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"
+                          />
+                        </svg>
+                        <div className="ml-4">
+                          <p className="text-base font-medium text-gray-900">
+                            Integrations
+                          </p>
+                          <p className="mt-1 text-sm text-gray-500">
+                            Connect with third-party tools that you&#039;re
+                            already using.
+                          </p>
+                        </div>
+                      </a>
+
+                      <a
+                        href="#"
+                        className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                      >
+                        <svg
+                          className="h-6 w-6 flex-shrink-0 text-indigo-600"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                          />
+                        </svg>
+                        <div className="ml-4">
+                          <p className="text-base font-medium text-gray-900">
+                            Automations
+                          </p>
+                          <p className="mt-1 text-sm text-gray-500">
+                            Build strategic funnels that will drive your
+                            customers to convert
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                    <div className="space-y-6 bg-gray-50 px-5 py-5 sm:flex justify-center items-center sm:space-y-0 sm:space-x-10 sm:px-8">
+                      <div className="flow-root">
+                        <a
+                          href="#"
+                          className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-100"
+                        >
+                          <svg
+                            className="h-6 w-6 flex-shrink-0 text-gray-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth="1.5"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
+                            />
+                          </svg>
+                          <span className="ml-3">Watch Demo</span>
+                        </a>
+                      </div>
+
+                      <div className="flow-root">
+                        <a
+                          href="#"
+                          className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-100"
+                        >
+                          <svg
+                            className="h-6 w-6 flex-shrink-0 text-gray-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth="1.5"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+                            />
+                          </svg>
+                          <span className="ml-3">Contact Sales</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <a
+              href="#"
+              className="text-base font-medium text-gray-500 hover:text-gray-900"
+            >
+              Pricing
+            </a>
+            <a
+              href="#"
+              className="text-base font-medium text-gray-500 hover:text-gray-900"
+            >
+              Docs
+            </a>
+
+            <div className="relative">
+              <button
+                type="button"
+                className="text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                aria-expanded="false"
+              >
+                <span>More</span>
+
+                <svg
+                  className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div className="menus relative">
+            <div className="relative inline-block text-left">
+              <div>
+                <button onClick={() => setProfile(!profile)}>
+                  {" "}
+                  <img
+                    className="w-10 h-10 rounded-full"
+                    src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
+                    alt="Rounded avatar"
+                  />
+                </button>
+              </div>
+
+              {profile && <div
+                className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="menu-button"
+                tabindex="-1"
+              >
+                <div className="py-1" role="none">
+                  <a
+                    href="#"
+                    className="text-gray-700 block px-4 py-2 text-sm"
+                    role="menuitem"
+                    tabindex="-1"
+                    id="menu-item-0"
+                  >
+                    Account settings
+                  </a>
+                  <a
+                    href="#"
+                    className="text-gray-700 block px-4 py-2 text-sm"
+                    role="menuitem"
+                    tabindex="-1"
+                    id="menu-item-1"
+                  >
+                    Support
+                  </a>
+                  <a
+                    href="#"
+                    className="text-gray-700 block px-4 py-2 text-sm"
+                    role="menuitem"
+                    tabindex="-1"
+                    id="menu-item-2"
+                  >
+                    License
+                  </a>
+                  <form method="POST" action="#" role="none">
+                    <button
+                      type="submit"
+                      className="text-gray-700 block w-full px-4 py-2 text-left text-sm"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-3"
+                    >
+                      Sign out
+                    </button>
+                  </form>
+                </div>
+              </div>}
+            </div>
+          </div>
+          </nav>
+          {/* <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+            <a
+              href="#"
+              className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+            >
+              Sign in
+            </a>
+            <a
+              href="#"
+              className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+            >
+              Sign up
+            </a>
+          </div> */}
+         
+        </div>
+      </div>
+
+      <div className="absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden">
+        <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+          <div className="px-5 pt-5 pb-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <img
+                  className="h-8 w-auto"
+                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                  alt="Your Company"
+                />
+              </div>
+              <div className="-mr-2">
+                <button
+                  type="button"
+                  className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                >
+                  <span className="sr-only">Close menu</span>
+
+                  <svg
+                    className="h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div className="mt-6">
+              <nav className="grid gap-y-8">
+                <a
+                  href="#"
+                  className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50"
+                >
+                  <svg
+                    className="h-6 w-6 flex-shrink-0 text-indigo-600"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
+                    />
+                  </svg>
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    Analytics
+                  </span>
+                </a>
+
+                <a
+                  href="#"
+                  className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50"
+                >
+                  <svg
+                    className="h-6 w-6 flex-shrink-0 text-indigo-600"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59"
+                    />
+                  </svg>
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    Engagement
+                  </span>
+                </a>
+
+                <a
+                  href="#"
+                  className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50"
+                >
+                  <svg
+                    className="h-6 w-6 flex-shrink-0 text-indigo-600"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
+                    />
+                  </svg>
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    Security
+                  </span>
+                </a>
+
+                <a
+                  href="#"
+                  className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50"
+                >
+                  <svg
+                    className="h-6 w-6 flex-shrink-0 text-indigo-600"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"
+                    />
+                  </svg>
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    Integrations
+                  </span>
+                </a>
+
+                <a
+                  href="#"
+                  className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50"
+                >
+                  <svg
+                    className="h-6 w-6 flex-shrink-0 text-indigo-600"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                    />
+                  </svg>
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    Automations
+                  </span>
+                </a>
+              </nav>
+            </div>
+          </div>
+          <div className="space-y-6 py-6 px-5">
+            <div className="grid grid-cols-2 gap-y-4 gap-x-8">
+              <a
+                href="#"
+                className="text-base font-medium text-gray-900 hover:text-gray-700"
+              >
+                Pricing
+              </a>
+
+              <a
+                href="#"
+                className="text-base font-medium text-gray-900 hover:text-gray-700"
+              >
+                Docs
+              </a>
+
+              <a
+                href="#"
+                className="text-base font-medium text-gray-900 hover:text-gray-700"
+              >
+                Help Center
+              </a>
+
+              <a
+                href="#"
+                className="text-base font-medium text-gray-900 hover:text-gray-700"
+              >
+                Guides
+              </a>
+
+              <a
+                href="#"
+                className="text-base font-medium text-gray-900 hover:text-gray-700"
+              >
+                Events
+              </a>
+
+              <a
+                href="#"
+                className="text-base font-medium text-gray-900 hover:text-gray-700"
+              >
+                Security
+              </a>
+            </div>
+            <div>
+              <a
+                href="#"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+              >
+                Sign up
+              </a>
+              <p className="mt-6 text-center text-base font-medium text-gray-500">
+                Existing customer?
+                <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                  Sign in
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default NavbarEunoya;
