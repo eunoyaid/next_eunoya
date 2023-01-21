@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gifts",
+  "info": {
+    "singularName": "gift",
+    "pluralName": "gifts",
+    "displayName": "gift",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "decimal"
+    }
+  }
+}

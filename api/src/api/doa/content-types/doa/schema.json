@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "doas",
+  "info": {
+    "singularName": "doa",
+    "pluralName": "doas",
+    "displayName": "doa",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "doa": {
+      "type": "richtext"
+    },
+    "isHadir": {
+      "type": "boolean"
+    },
+    "brides": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "doas"
+    }
+  }
+}
