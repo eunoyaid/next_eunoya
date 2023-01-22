@@ -7,8 +7,6 @@ import SectionResult from './sectionResult';
 
 
 const Details = () => {
-
-  
     const [query, setQuery] = useState()
  
 const onSearch = (e) => {
