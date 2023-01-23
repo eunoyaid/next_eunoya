@@ -7,7 +7,7 @@ const CustomInput = ({ label, ...props }) => {
     console.log('meta',meta);
   return (
       <div>
-          <label></label>
+          <label >{label} </label>
           <input {...field} {...props} className={meta.touched && meta.error ? 'input-error' : 'input'} />
           {meta.touched && meta.error && <div className='error'>{meta.error} </div>} 
     </div>
