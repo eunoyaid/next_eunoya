@@ -64,6 +64,7 @@ const NavbarEunoya = () => {
                 src={icSearch}
                 h={10}
                 w={10}
+                alt='ic-serach'
               />
 
               <button onClick={() => setCart(!cart)}>
