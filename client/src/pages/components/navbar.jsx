@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { CiShoppingCart } from "react-icons/ci";
+// import { CiShoppingCart } from "react-icons/ci";
 import icSearch from "../../assets/icSearch.svg";
 import icClose from "../../assets/icClose.svg";
 
@@ -62,14 +62,12 @@ const NavbarEunoya = () => {
                 onClick={() => setSearch(!search)}
                 className="cursor-pointer"
                 src={icSearch}
-                h={10}
-                w={10}
-                alt='ic-serach'
+                alt="ic-search"
               />
 
               <button onClick={() => setCart(!cart)}>
                 {" "}
-                <CiShoppingCart className="w-6 h-6" />{" "}
+                {/* <CiShoppingCart className="w-6 h-6" />{" "} */}
               </button>
             </div>
             <div className="menus relative">
@@ -193,7 +191,7 @@ const NavbarEunoya = () => {
               onClick={() => setSearch(!search)}
               className="text-white cursor-pointer absolute right-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
             >
-              <Image src={icClose} className="w-5 h-5" alt="ic-search" />
+              <Image src={icClose} alt="ic-close" />
             </div>
           </form>
         </div>

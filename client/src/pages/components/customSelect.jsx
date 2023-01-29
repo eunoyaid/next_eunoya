@@ -3,8 +3,8 @@ import React from "react";
 
 const CustomSelect = ({ label, ...props }) => {
   const [field, meta] = useField(props);
-  console.log("field", field);
-  console.log("meta", meta);
+  // console.log("field", field);
+  // console.log("meta", meta);
   return (
     <div>
       <label>{label} </label>
