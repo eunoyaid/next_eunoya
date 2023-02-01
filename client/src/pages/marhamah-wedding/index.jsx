@@ -1,81 +1,42 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
-import { Spinner, Toast } from "flowbite-react";
+import { Button, Spinner, Toast } from "flowbite-react";
 import { HiCheck } from "react-icons/hi";
-
-const MyTextInput = ({ label, ...props }) => {
-  // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
-  // which we can spread on <input>. We can use field meta to show an error
-  // message if the field is invalid and it has been touched (i.e. visited)
-  const [field, meta] = useField(props);
-  return (
-    <>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <input className="text-input" {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </>
-  );
-};
-
-const MyCheckbox = ({ children, ...props }) => {
-  // React treats radios and checkbox inputs differently other input types, select, and textarea.
-  // Formik does this too! When you specify `type` to useField(), it will
-  // return the correct bag of props for you -- a `checked` prop will be included
-  // in `field` alongside `name`, `value`, `onChange`, and `onBlur`
-  const [field, meta] = useField({ ...props, type: "checkbox" });
-  return (
-    <div>
-      <label className="checkbox-input">
-        <input type="checkbox" {...field} {...props} />
-        {children}
-      </label>
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
-
-const MySelect = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  return (
-    <div>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <select {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
+import CustomInput from "../components/customInput";
+import { Field } from "formik";
+import CustomTextArea from "../components/customTextArea";
 
 // And now we can use these
 const SignupForm = () => {
   const [success, setSuccess] = useState();
+  const [data, setData] = useState();
+
   return (
     <>
       <h1>Subscribe!</h1>
       <Formik
         initialValues={{
-          firstName: "",
-          acceptedTerms: false, // added for our checkbox
+          Name: "",
+          isHadir: "",
+          // acceptedTerms: false,
         }}
         validationSchema={Yup.object({
-          firstName: Yup.string()
+          Name: Yup.string()
             .max(15, "Must be 15 characters or less")
             .required("Required"),
+          Doa: Yup.string()
+            .max(225, "maksimal 225 karakter")
+            .required("Required"),
 
-          acceptedTerms: Yup.boolean()
-            .required("Required")
-            .oneOf([true], "You must accept the terms and conditions."),
+          // acceptedTerms: Yup.boolean()
+          //   .required("Required")
+          //   .oneOf([true], "You must accept the terms and conditions."),
         })}
         onSubmit={(values, actions) => {
           setTimeout(() => {
-            console.log(actions);
+            console.log(values);
+            setData(values);
             actions.resetForm();
             setSuccess(true);
           }, 400);
@@ -85,17 +46,7 @@ const SignupForm = () => {
         }}
       >
         {(props) => {
-          const {
-            values,
-            touched,
-            errors,
-            dirty,
-            isSubmitting,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            handleReset,
-          } = props;
+          const { isSubmitting } = props;
           return (
             <Form>
               {success && (
@@ -109,25 +60,97 @@ const SignupForm = () => {
                   <Toast.Toggle />
                 </Toast>
               )}
-              <MyTextInput
-                label="First Name"
-                name="firstName"
+              <CustomInput
+                label="Name"
+                name="Name"
                 type="text"
-                placeholder="Jane"
+                placeholder="Nama Kamu"
               />
-              <MyCheckbox name="acceptedTerms">
-                I accept the terms and conditions
-              </MyCheckbox>
 
-              <button type="submit">
-                
-                {isSubmitting && <Spinner aria-label="Default status example" />}
+              {/* <div className="flex gap-5 ">
+                <div className="flex items-center mb-4">
+                  <Field
+                    id="default-radio-1"
+                    type="radio"
+                    value="hadir"
+                    name="isHadir"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <label
+                    htmlFor="default-radio-1"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    hadir
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <Field
+                    id="default-radio-2"
+                    type="radio"
+                    value="tidak hadir"
+                    name="isHadir"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <label
+                    htmlFor="default-radio-2"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    tidak hadir
+                  </label>
+                </div>
+              </div> */}
+
+              <div className="flex flex-wrap">
+                <div className="flex items-center mr-4">
+                  <Field
+                    id="green-radio"
+                    type="radio"
+                    value="Ya, saya bisa berhadir"
+                    name="isHadir"
+                    className="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <label
+                    htmlFor="green-radio"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    Ya, saya bisa berhadir
+                  </label>
+                </div>
+                <div className="flex items-center mr-4">
+                  <Field
+                    id="red-radio"
+                    type="radio"
+                    value="Maaf, saya ada kesibukan lain"
+                    name="isHadir"
+                    className="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <label
+                    htmlFor="red-radio"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    Maaf, saya ada kesibukan lain
+                  </label>
+                </div>
+              </div>
+
+              <CustomTextArea label="Doa kamu" name="Doa" />
+
+              {/* <CustomCheckbox name="acceptedTerms">
+                I accept the terms and conditions
+              </CustomCheckbox> */}
+
+              <Button className="mt-5" type="submit">
+                {isSubmitting && (
+                  <Spinner aria-label="Default status example" />
+                )}
                 Submit
-              </button>
+              </Button>
             </Form>
           );
         }}
       </Formik>
+
+      {JSON.stringify(data)}
     </>
   );
 };
