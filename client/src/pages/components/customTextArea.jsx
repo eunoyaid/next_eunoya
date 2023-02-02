@@ -1,4 +1,4 @@
-import { useField } from "formik";
+import { Field, useField } from "formik";
 import React from "react";
 
 const CustomTextArea = ({ label, ...props }) => {
@@ -6,7 +6,8 @@ const CustomTextArea = ({ label, ...props }) => {
   return (
     <div>
       <label htmlFor={props.id || props.name}>{label}</label>
-      <textarea
+      <Field
+        as="textarea"
         {...field}
         {...props}
         className={meta.touched && meta.error ? "input-error" : "input"}
