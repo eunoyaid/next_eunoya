@@ -12,4 +12,10 @@
     .error{
         @apply text-xs text-red-500 mt-0
     }
+    .form-control{
+        @apply mb-4
+    }
+    label{
+        @apply capitalize
+    }
   }

@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
-import { Button, Spinner, Toast } from "flowbite-react";
+import { Button, Spinner } from "flowbite-react";
 import { HiCheck } from "react-icons/hi";
 import CustomInput from "../components/customInput";
-import { Field } from "formik";
-import CustomTextArea from "../components/customTextArea";
+import toast, { Toaster } from "react-hot-toast";
+
+const Toast = () =>
+  toast("wahh terimakasih hadiah nya", {
+    icon: "😁",
+  });
 
 // And now we can use these
 const FormGift = () => {
@@ -14,6 +18,7 @@ const FormGift = () => {
 
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <Formik
         initialValues={{
           Name: "",
@@ -33,9 +38,8 @@ const FormGift = () => {
           //   .oneOf([true], "You must accept the terms and conditions."),
         })}
         onSubmit={(values, actions) => {
-          console.log(values);
           setData(values);
-          setSuccess("wahh terimakasih Hadiah nya ya :)");
+          Toast();
           actions.resetForm();
         }}
       >
@@ -45,15 +49,6 @@ const FormGift = () => {
             <div className="@container">
               <div className="px-5 mt-5 w-full form-wrapper">
                 <Form>
-                  {success && (
-                    <Toast className="mb-6">
-                      <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200">
-                        <HiCheck className="h-5 w-5" />
-                      </div>
-                      <div className="ml-3 text-sm font-normal">{success}</div>
-                      <Toast.Toggle />
-                    </Toast>
-                  )}
                   <CustomInput
                     label="Nama"
                     name="Name"

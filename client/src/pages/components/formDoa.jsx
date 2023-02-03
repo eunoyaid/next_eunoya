@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
-import { Button, Spinner, Toast } from "flowbite-react";
-import { HiCheck } from "react-icons/hi";
+import { Button, Spinner } from "flowbite-react";
+
 import CustomInput from "../components/customInput";
 import { Field } from "formik";
 import CustomTextArea from "../components/customTextArea";
+import toast, { Toaster } from "react-hot-toast";
+
+const Toast = () =>
+  toast("wahh terimakasih doa nya", {
+    icon: "😇",
+  });
 
 // And now we can use these
 const FormDoa = () => {
@@ -14,6 +20,7 @@ const FormDoa = () => {
 
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <Formik
         initialValues={{
           Name: "",
@@ -33,9 +40,8 @@ const FormDoa = () => {
           //   .oneOf([true], "You must accept the terms and conditions."),
         })}
         onSubmit={(values, actions) => {
-          console.log(values);
           setData(values);
-          setSuccess("terimakasih doa nya :)");
+          Toast();
           actions.resetForm();
         }}
       >
@@ -45,54 +51,12 @@ const FormDoa = () => {
             <div className="@container">
               <div className="px-5 mt-5 w-full form-wrapper">
                 <Form>
-                  {success && (
-                    <Toast>
-                      <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200">
-                        <HiCheck className="h-5 w-5" />
-                      </div>
-                      <div className="ml-3 text-sm font-normal">{success}</div>
-                      <Toast.Toggle />
-                    </Toast>
-                  )}
                   <CustomInput
                     label="Name"
                     name="Name"
                     type="text"
                     placeholder="Nama Kamu"
                   />
-
-                  {/* <div className="flex gap-5 ">
-                <div className="flex items-center mb-4">
-                  <Field
-                    id="default-radio-1"
-                    type="radio"
-                    value="hadir"
-                    name="isHadir"
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label
-                    htmlFor="default-radio-1"
-                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    hadir
-                  </label>
-                </div>
-                <div className="flex items-center">
-                  <Field
-                    id="default-radio-2"
-                    type="radio"
-                    value="tidak hadir"
-                    name="isHadir"
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label
-                    htmlFor="default-radio-2"
-                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    tidak hadir
-                  </label>
-                </div>
-              </div> */}
 
                   <div className="radio-button mb-4">
                     <p className="capitalize mb-2">

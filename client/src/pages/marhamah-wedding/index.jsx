@@ -8,7 +8,7 @@ const Index = () => {
     <div>
       <FormDoa />
       <FormGift />
-      <CountdownMonths />
+      {/* <CountdownMonths /> */}
     </div>
   );
 };

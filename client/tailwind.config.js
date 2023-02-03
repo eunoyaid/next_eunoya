@@ -10,6 +10,6 @@ module.exports = {
   },
   plugins: [require('flowbite/plugin'),
   require('@tailwindcss/container-queries'),
-    // require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/aspect-ratio'),
   ],
 }
