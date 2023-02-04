@@ -1,81 +1,77 @@
-import React, { useState } from "react";
-import { Formik, Form, useField } from "formik";
-import * as Yup from "yup";
 import { Button, Spinner } from "flowbite-react";
-import { HiCheck } from "react-icons/hi";
-import CustomInput from "../components/customInput";
+import { Form, Formik } from "formik";
+import React, { useState } from "react";
+import * as Yup from "yup";
+import FormikControl from "./formikControl";
 import toast, { Toaster } from "react-hot-toast";
 
-const Toast = () =>
-  toast("wahh terimakasih hadiah nya", {
-    icon: "😁",
-  });
-
-// And now we can use these
 const FormGift = () => {
-  const [success, setSuccess] = useState();
   const [data, setData] = useState();
 
+  const initialvalues = {
+    name: "",
+    gift: "",
+  };
+  const validationSchema = Yup.object({
+    name: Yup.string().required("hmmm seperti nya kamu belum memasukan nama"),
+    gift: Yup.number().required(
+      "hmmm seperti nya kamu belum memasukan nominal hadiah "
+    ),
+  });
+
+  const Toast = () =>
+    toast("hihi terimakasih hadiah nya", {
+      icon: "😁",
+    });
+
+  const onSubmit = (values, actions) => {
+    console.log(values);
+    setData(values);
+    Toast();
+    actions.resetForm();
+  };
+
   return (
-    <>
+    <div className="form-wrapper">
       <Toaster position="top-center" reverseOrder={false} />
       <Formik
-        initialValues={{
-          Name: "",
-          Nominal: "",
-          // acceptedTerms: false,
-        }}
-        validationSchema={Yup.object({
-          Name: Yup.string()
-            .max(15, "Must be 15 characters or less")
-            .required("hmmm tuliskan nama mu dong disini "),
-          Nominal: Yup.number().required(
-            "yahh sepertinya kamu belum memasukan nomianal hadiah mu"
-          ),
-
-          // acceptedTerms: Yup.boolean()
-          //   .required("Required")
-          //   .oneOf([true], "You must accept the terms and conditions."),
-        })}
-        onSubmit={(values, actions) => {
-          setData(values);
-          Toast();
-          actions.resetForm();
-        }}
+        initialValues={initialvalues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
       >
         {(props) => {
           const { isSubmitting } = props;
           return (
-            <div className="@container">
-              <div className="px-5 mt-5 w-full form-wrapper">
-                <Form>
-                  <CustomInput
-                    label="Nama"
-                    name="Name"
-                    type="text"
-                    placeholder="tuliskan nama mu"
+            <Form>
+              <FormikControl
+                control="input"
+                type="text"
+                label="nama"
+                name="name"
+              />
+              <FormikControl
+                control="input"
+                type="number"
+                label="Nominal Hadiah"
+                name="gift"
+              />
+              <Button className="mt-5 w-full" type="submit">
+                {isSubmitting ? (
+                  <Spinner
+                    className="mr-2"
+                    aria-label="Default status example"
                   />
-                  <CustomInput
-                    label="Nominal Hadiah"
-                    name="Nominal"
-                    type="number"
-                    placeholder="tuliskan nominal hadiah mu"
-                  />
-                  <Button className="mt-5 w-full" type="submit">
-                    {isSubmitting && (
-                      <Spinner aria-label="Default status example" />
-                    )}
-                    Submit
-                  </Button>
-                </Form>
-              </div>
-            </div>
+                ) : (
+                  "Submit"
+                )}
+              </Button>
+            </Form>
           );
         }}
       </Formik>
-
       {JSON.stringify(data)}
-    </>
+    </div>
   );
 };
+
 export default FormGift;

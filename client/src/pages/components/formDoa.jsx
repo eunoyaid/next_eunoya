@@ -5,15 +5,25 @@ import * as Yup from "yup";
 import FormikControl from "./formikControl";
 import toast, { Toaster } from "react-hot-toast";
 
-const FormikContainer = () => {
+const FormDoa = () => {
   const [data, setData] = useState();
+
+  const radioOptions = [
+    { key: "Ya, saya akan hadir", value: "Ya, saya akan hadir" },
+    {
+      key: "Maaf, saya ada kesibukan lain",
+      value: "Maaf, saya ada kesibukan lain",
+    },
+  ];
 
   const initialvalues = {
     name: "",
+    isHadir: "",
     doa: "",
   };
   const validationSchema = Yup.object({
     name: Yup.string().required("hmmm seperti nya kamu belum memasukan nama"),
+    isHadir: Yup.string().required("kamu belum memberitau kehadiran mu di acara"),
     doa: Yup.string().required(
       "hmmm seperti nya kamu belum memberikan doa ke pasangan "
     ),
@@ -55,6 +65,12 @@ const FormikContainer = () => {
                 label="Doa untuk pasangan"
                 name="doa"
               />
+              <FormikControl
+                control="radio"
+               options={radioOptions}
+                label="Bisakah kamu berhadir?"
+                name="isHadir"
+              />
               <Button className="mt-5 w-full" type="submit">
                 {isSubmitting ? (
                   <Spinner
@@ -74,4 +90,4 @@ const FormikContainer = () => {
   );
 };
 
-export default FormikContainer;
+export default FormDoa;

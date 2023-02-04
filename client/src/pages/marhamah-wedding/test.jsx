@@ -1,10 +1,13 @@
 import React from 'react'
-import FormDoa2 from '../components/formDoa'
+import FormDoa from '../components/formDoa'
+import FormGift from '../components/formGift'
+
 
 const Test = () => {
   return (
       <div>
-          <FormDoa2/>
+          <FormDoa/>
+          <FormGift/>
     </div>
   )
 }
