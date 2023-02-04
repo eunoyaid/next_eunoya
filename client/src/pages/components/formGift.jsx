@@ -3,6 +3,7 @@ import { Form, Formik } from "formik";
 import React, { useState } from "react";
 import * as Yup from "yup";
 import FormikControl from "./formikControl";
+import { FiSend } from "react-icons/fi";
 import toast, { Toaster } from "react-hot-toast";
 
 const FormGift = () => {
@@ -55,14 +56,15 @@ const FormGift = () => {
                 label="Nominal Hadiah"
                 name="gift"
               />
-              <Button className="mt-5 w-full" type="submit">
+             <Button className="mt-5 w-full" type="submit">
                 {isSubmitting ? (
                   <Spinner
                     className="mr-2"
                     aria-label="Default status example"
                   />
                 ) : (
-                  "Submit"
+                   <span className="flex items-center"> <FiSend className='mr-2'/>
+                   Submit</span>
                 )}
               </Button>
             </Form>

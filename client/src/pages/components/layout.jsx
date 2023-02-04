@@ -5,7 +5,7 @@ import NavbarEunoya from './navbar'
 export default function Layout({ children }) {
   return (
     <>
-      <NavbarEunoya />
+      {/* <NavbarEunoya /> */}
       <main>{children}</main>
      
     </>

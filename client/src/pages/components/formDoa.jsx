@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import * as Yup from "yup";
 import FormikControl from "./formikControl";
 import toast, { Toaster } from "react-hot-toast";
+import { FiSend } from "react-icons/fi";
 
 const FormDoa = () => {
   const [data, setData] = useState();
@@ -78,7 +79,8 @@ const FormDoa = () => {
                     aria-label="Default status example"
                   />
                 ) : (
-                  "Submit"
+                   <span className="flex items-center"> <FiSend className='mr-2'/>
+                   Submit</span>
                 )}
               </Button>
             </Form>

@@ -16,14 +16,14 @@ export const CountdownMonths = () => {
   }, []);
 
   return (
-    <>
-      <p>Deadline comes in</p>
-      <p className="counter">
-        <span>{timeBetween.days()}d </span>
-        <span>{timeBetween.hours()}h </span>
-        <span>{timeBetween.minutes()}min </span>
-        <span>{timeBetween.seconds()}s </span>
-      </p>
-    </>
+    <div className="text-center">
+      <p>Menuju hari Bahagia</p>
+      <div className="counter p-4 flex ">
+        <span className="p-2  border border-gray-200 rounded-xl bg-white shadow mx-2" >{timeBetween.days()} Hari </span>
+        <span className="p-2  border border-gray-200 rounded-xl bg-white shadow mx-2" >{timeBetween.hours()} jam </span>
+        <span className="p-2  border border-gray-200 rounded-xl bg-white shadow mx-2" >{timeBetween.minutes()} Menit </span>
+        <span className="p-2  border border-gray-200 rounded-xl bg-white shadow mx-2" >{timeBetween.seconds()} Detik </span>
+      </div>
+    </div>
   );
 };
