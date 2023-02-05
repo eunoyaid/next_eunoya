@@ -9,6 +9,7 @@ const FavoriteProduct = () => {
     await axios.get(url).then((res) => res.data.products.slice(0, 4));
   const { data, error } = useSWR(address, fetcher);
   let loading = !data && !error;
+  console.log(data);
 
   return (
     <div>

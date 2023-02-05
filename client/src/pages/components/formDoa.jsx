@@ -5,10 +5,9 @@ import * as Yup from "yup";
 import FormikControl from "./formikControl";
 import toast, { Toaster } from "react-hot-toast";
 import { FiSend } from "react-icons/fi";
+import axios from "axios";
 
 const FormDoa = () => {
-  const [data, setData] = useState();
-
   const radioOptions = [
     { key: "Ya, saya akan hadir", value: "Ya, saya akan hadir" },
     {
@@ -24,7 +23,9 @@ const FormDoa = () => {
   };
   const validationSchema = Yup.object({
     name: Yup.string().required("hmmm seperti nya kamu belum memasukan nama"),
-    isHadir: Yup.string().required("kamu belum memberitau kehadiran mu di acara"),
+    isHadir: Yup.string().required(
+      "kamu belum memberitau kehadiran mu di acara"
+    ),
     doa: Yup.string().required(
       "hmmm seperti nya kamu belum memberikan doa ke pasangan "
     ),
@@ -35,10 +36,23 @@ const FormDoa = () => {
       icon: "😇",
     });
 
-  const onSubmit = (values, actions) => {
+  const onSubmit = async (values, actions) => {
     console.log(values);
-    setData(values);
+    try {
+      const response = await axios.post("http://localhost:1337/api/doas", {
+        data: values,
+        // data: {
+        //   name: "tomo dari form",
+        //   isHadir: true,
+        //   doa: "semoga yaa",
+        // },
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
     Toast();
+
     actions.resetForm();
   };
 
@@ -68,7 +82,7 @@ const FormDoa = () => {
               />
               <FormikControl
                 control="radio"
-               options={radioOptions}
+                options={radioOptions}
                 label="Bisakah kamu berhadir?"
                 name="isHadir"
               />
@@ -79,15 +93,17 @@ const FormDoa = () => {
                     aria-label="Default status example"
                   />
                 ) : (
-                   <span className="flex items-center"> <FiSend className='mr-2'/>
-                   Submit</span>
+                  <span className="flex items-center">
+                    {" "}
+                    <FiSend className="mr-2" />
+                    Submit
+                  </span>
                 )}
               </Button>
             </Form>
           );
         }}
       </Formik>
-      {JSON.stringify(data)}
     </div>
   );
 };

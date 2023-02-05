@@ -18,14 +18,14 @@
     "doa": {
       "type": "richtext"
     },
-    "isHadir": {
-      "type": "boolean"
-    },
     "brides": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "doas"
+    },
+    "isHadir": {
+      "type": "string"
     }
   }
 }

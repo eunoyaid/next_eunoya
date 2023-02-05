@@ -5,17 +5,18 @@ import * as Yup from "yup";
 import FormikControl from "./formikControl";
 import { FiSend } from "react-icons/fi";
 import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 const FormGift = () => {
-  const [data, setData] = useState();
+  // const [data, setData] = useState();
 
   const initialvalues = {
     name: "",
-    gift: "",
+    amount: "",
   };
   const validationSchema = Yup.object({
     name: Yup.string().required("hmmm seperti nya kamu belum memasukan nama"),
-    gift: Yup.number().required(
+    amount: Yup.number().required(
       "hmmm seperti nya kamu belum memasukan nominal hadiah "
     ),
   });
@@ -25,9 +26,15 @@ const FormGift = () => {
       icon: "😁",
     });
 
-  const onSubmit = (values, actions) => {
-    console.log(values);
-    setData(values);
+  const onSubmit = async (values, actions) => {
+    try {
+      const response = await axios.post("http://localhost:1337/api/gifts", {
+        data: values,
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
     Toast();
     actions.resetForm();
   };
@@ -54,24 +61,27 @@ const FormGift = () => {
                 control="input"
                 type="number"
                 label="Nominal Hadiah"
-                name="gift"
+                name="amount"
               />
-             <Button className="mt-5 w-full" type="submit">
+              <Button className="mt-5 w-full" type="submit">
                 {isSubmitting ? (
                   <Spinner
                     className="mr-2"
                     aria-label="Default status example"
                   />
                 ) : (
-                   <span className="flex items-center"> <FiSend className='mr-2'/>
-                   Submit</span>
+                  <span className="flex items-center">
+                    {" "}
+                    <FiSend className="mr-2" />
+                    Submit
+                  </span>
                 )}
               </Button>
             </Form>
           );
         }}
       </Formik>
-      {JSON.stringify(data)}
+      {/* {JSON.stringify(data)} */}
     </div>
   );
 };
