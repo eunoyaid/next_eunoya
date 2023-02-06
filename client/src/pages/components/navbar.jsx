@@ -56,6 +56,12 @@ const NavbarEunoya = () => {
             >
               Blogs
             </Link>
+            <Link
+              href="/wedding"
+              className="text-base font-medium text-gray-500 hover:text-gray-900"
+            >
+              wedding
+            </Link>
 
             <div className="icons flex gap-3">
               <Image

@@ -4,30 +4,30 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import Layout from './components/layout'
 
-function Loading() { 
-const router= useRouter()
-const[loading,setLoading] = useState(false)
- useEffect(()=>{
-  const handleStart=(url) => (url !== router.asPath) &&(setLoading(true))
-  const handleComplate=(url) => (url === router.asPath) && setTimeout(() => {setLoading(false)
-  },5000)
-  router.events.on('routerChangeStart', handleStart)
-  router.events.on('routerChangeComplate', handleComplate)
-  router.events.on('routerChangeError', handleComplate)
-  return () => {
-    router.events.off('routerChangeStart', handleStart)
-    router.events.off('routerChangeComplate', handleComplate)
-    router.events.off('routerChangeError', handleComplate)
-  }
+// function Loading() { 
+// const router= useRouter()
+// const[loading,setLoading] = useState(false)
+//  useEffect(()=>{
+//   const handleStart=(url) => (url !== router.asPath) &&(setLoading(true))
+//   const handleComplate=(url) => (url === router.asPath) && setTimeout(() => {setLoading(false)
+//   },5000)
+//   router.events.on('routerChangeStart', handleStart)
+//   router.events.on('routerChangeComplate', handleComplate)
+//   router.events.on('routerChangeError', handleComplate)
+//   return () => {
+//     router.events.off('routerChangeStart', handleStart)
+//     router.events.off('routerChangeComplate', handleComplate)
+//     router.events.off('routerChangeError', handleComplate)
+//   }
 
- })
+//  })
 
- return loading && (
-  <div>
-    <p>loading...</p>
-  </div>
- )
-}
+//  return loading && (
+//   <div>
+//     <p>loading...</p>
+//   </div>
+//  )
+// }
 
 
 export default function MyApp({ Component, pageProps }) {
@@ -39,7 +39,7 @@ export default function MyApp({ Component, pageProps }) {
 }
   return (
     <AnimatePresence>
-    <Layout>
+ 
       <motion.div
       key={router.route}
       variants={variants} // Pass the variant object into Framer Motion 
@@ -48,10 +48,10 @@ export default function MyApp({ Component, pageProps }) {
       exit="exit" // Exit state (used later) to variants.exit
       transition={{ type: 'linear' }} // Set the transition to linear
       >
-        <Loading/>
+  
       <Component {...pageProps} />
       </motion.div>
-    </Layout>
+
     </AnimatePresence>
   )
 }
