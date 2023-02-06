@@ -6,6 +6,7 @@ import FormikControl from "./formikControl";
 import toast, { Toaster } from "react-hot-toast";
 import { FiSend } from "react-icons/fi";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 const FormDoa = () => {
   const radioOptions = [
@@ -57,7 +58,12 @@ const FormDoa = () => {
   };
 
   return (
-    <div className="form-wrapper">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      className="form-wrapper"
+    >
       <Toaster position="top-center" reverseOrder={false} />
       <Formik
         initialValues={initialvalues}
@@ -104,7 +110,7 @@ const FormDoa = () => {
           );
         }}
       </Formik>
-    </div>
+    </motion.div>
   );
 };
 

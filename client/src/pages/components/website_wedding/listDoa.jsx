@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import useSWR from "swr";
 import moment from "moment";
+import { motion } from "framer-motion";
 
 const ListDoa = () => {
   const address = `http://localhost:1337/api/doas`;
@@ -9,9 +10,14 @@ const ListDoa = () => {
     await axios.get(url).then((res) => res.data.data);
   const { data, error } = useSWR(address, fetcher);
   console.log(data);
+  let loading = !data && !error;
 
   return (
-    <div
+    <motion.div
+      initial={{ y: 100, x: 0 }}
+      whileInView={{ opacity: 1, y: 0, x: 0 }}
+      transition={{ duration: 0.3 }}
+      viewport={{ once: false }}
       id="listDoa"
       className="bg-white rounded-xl border mb-10 border-gray-200 shadow  overflow-y-scroll p-5 w-full"
     >
@@ -20,6 +26,8 @@ const ListDoa = () => {
       </p>
 
       <ul className="overflow-y-scroll h-56">
+        {error && error.message}
+        {loading && "loading"}
         {data?.map((item) => (
           <li key={item.id}>
             <article className="p-3 text-base bg-white rounded-lg dark:bg-gray-900">
@@ -47,7 +55,7 @@ const ListDoa = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </motion.div>
   );
 };
 

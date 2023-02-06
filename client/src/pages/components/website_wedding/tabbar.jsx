@@ -6,7 +6,7 @@ import React from "react";
 
 const Tabbar = () => {
   return (
-    <div className="w-[80%] p-4 boder bg-white mx-auto  border-gray-200 rounded-xl shadow  flex gap-2 justify-between fixed  bottom-3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+    <div className="w-[80%] p-4 boder bg-white mx-auto  border-gray-200 rounded-xl shadow  flex gap-2 justify-between fixed z-50  bottom-3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
       <a href="#listDoa" className="icon">
         {" "}
         <BiHomeSmile className="h-8 w-8" />

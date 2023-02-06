@@ -6,6 +6,7 @@ import FormikControl from "./formikControl";
 import { FiSend } from "react-icons/fi";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 const FormGift = () => {
   // const [data, setData] = useState();
@@ -40,7 +41,12 @@ const FormGift = () => {
   };
 
   return (
-    <div className="form-wrapper">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      className="form-wrapper"
+    >
       <Toaster position="top-center" reverseOrder={false} />
       <Formik
         initialValues={initialvalues}
@@ -82,7 +88,7 @@ const FormGift = () => {
         }}
       </Formik>
       {/* {JSON.stringify(data)} */}
-    </div>
+    </motion.div>
   );
 };
 
