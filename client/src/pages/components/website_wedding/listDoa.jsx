@@ -9,7 +9,6 @@ const ListDoa = () => {
   const fetcher = async (url) =>
     await axios.get(url).then((res) => res.data.data);
   const { data, error } = useSWR(address, fetcher);
-  console.log(data);
   let loading = !data && !error;
 
   return (
@@ -21,7 +20,7 @@ const ListDoa = () => {
       id="listDoa"
       className="bg-white rounded-xl border mb-10 border-gray-200 shadow  overflow-y-scroll p-5 w-full"
     >
-      <p className="text-center text-xl font-semibold mb-4 capitalize">
+      <p className="text-center  text-xl font-semibold mb-4 capitalize">
         doa terbaik mereka untuk pasangan
       </p>
 

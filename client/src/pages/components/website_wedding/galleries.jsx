@@ -65,7 +65,7 @@ const Galleries = () => {
   ];
 
   return (
-    <div>
+    <div id="galleries">
       <Gallery photos={photos} onClick={openLightbox} />
       <ModalGateway>
         {viewerIsOpen ? (

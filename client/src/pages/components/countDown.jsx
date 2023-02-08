@@ -22,8 +22,8 @@ export const CountdownMonths = () => {
   }
 
   return (
-    <div className="text-center">
-      <p>Menuju hari Bahagia</p>
+    <div className="text-center" id="dateWedding">
+      <p className="title-section">Menuju hari Bahagia</p>
       <div className="counter p-4 flex ">
         <span className="p-2  border border-gray-200 rounded-xl bg-white shadow mx-2">
           {timeBetween.days()} Hari{" "}
