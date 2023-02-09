@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html{
+        @apply scroll-smooth
+    }
+    .input {
+     @apply bg-gray-50 mb-3 mt-1 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+    }
+    .input-error{
+        @apply border mb-3 mt-1 border-red-500 bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+    }
+    .error{
+        @apply text-xs text-red-500 mt-0
+    }
+    .form-control{
+        @apply mb-4
+    }
+    label{
+        @apply capitalize
+    }
+    .form-wrapper{
+        @apply rounded-xl border border-gray-200 shadow-lg p-5 mx-auto block
+    }
+    .tittle-section{
+        @apply capitalize text-xl text-center
+    }
+  }
