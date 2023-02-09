@@ -82,7 +82,7 @@ const Header = () => {
               </div>
 
               <Link
-                href="/marhamah-wedding/undangan"
+                href="/marhamah-wedding"
                 className="uppercase inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700"
               >
                 coba sekarang
