@@ -6,7 +6,7 @@ module.exports = ({ env }) => ({
       port: env.int('DATABASE_PORT', 3306),
       database: env('DATABASE_NAME', 'next_eunoya'),
       user: env('DATABASE_USERNAME', 'root'),
-      password: env('DATABASE_PASSWORD', ''),
+      password: env('DATABASE_PASSWORD', '123456789'),
       ssl: env.bool('DATABASE_SSL', false),
     },
   },

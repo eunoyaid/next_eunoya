@@ -4,8 +4,7 @@
   "info": {
     "singularName": "doa",
     "pluralName": "doas",
-    "displayName": "doa",
-    "description": ""
+    "displayName": "doa"
   },
   "options": {
     "draftAndPublish": true
@@ -15,17 +14,11 @@
     "name": {
       "type": "string"
     },
-    "doa": {
-      "type": "richtext"
-    },
-    "brides": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "doas"
-    },
     "isHadir": {
       "type": "string"
+    },
+    "doa": {
+      "type": "richtext"
     }
   }
 }
