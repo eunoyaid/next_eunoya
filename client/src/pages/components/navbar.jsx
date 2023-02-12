@@ -2,9 +2,10 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-// import { CiShoppingCart } from "react-icons/ci";
-import icSearch from "../../assets/icSearch.svg";
-import icClose from "../../assets/icClose.svg";
+import icCart from "/public/icons/icCart.svg";
+import icBrand from "/public/icons/icBrand.svg";
+import icSearch from "/public/icons/icSearch.svg";
+import icClose from "/public/icons/icClose.svg";
 
 const NavbarEunoya = () => {
   const [search, setSearch] = useState();
@@ -22,128 +23,120 @@ const NavbarEunoya = () => {
   };
 
   return (
-    <div className=" bg-white">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
-          <div className="flex justify-start lg:w-0 lg:flex-1">
-            <Link href="/">
-              <span className="sr-only">Your Company</span>
-              <img
-                className="h-8 w-auto sm:h-10"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              />
-            </Link>
-          </div>
+    <div className=" bg-white py-3 px-5 lg:py-4 lg:px-6 smooth-shadow fixed w-[80%]  z-20 mx-auto rounded-xl border border-gray-100  mt-3 left-0 right-0">
+      <div className="flex items-center justify-between   ">
+        <div className="flex justify-start font-nunito ">
+          <Link href="/">
+            <span className="sr-only">Your Company</span>
+            <Image src={icBrand} alt="ic-eunoya" />
+          </Link>
+        </div>
 
-          <nav className="hidden space-x-10 md:flex">
+        <nav className="lg:flex ">
+          <div className=" hidden space-x-6 lg:items-center  lg:flex menus">
             <Link
               href="/"
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
+              className="font-nunito text-lg  font-medium text-gray-500 hover:text-gray-900"
             >
               Home
             </Link>
-
             <Link
               href="/products"
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
+              className="font-nunito text-lg font-medium text-gray-500 hover:text-gray-900"
             >
               Products
             </Link>
             <Link
               href="/blogs"
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
+              className="font-nunito text-lg font-medium text-gray-500 hover:text-gray-900"
             >
               Blogs
             </Link>
             <Link
               href="/wedding"
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
+              className="font-nunito text-lg font-medium text-gray-500 hover:text-gray-900"
             >
-              wedding
+              Wedding
             </Link>
-
-            <div className="icons flex gap-3">
+          </div>
+          <div className="relative flex items-center">
+            <div className=" icons flex gap-4 mx-4">
               <Image
                 onClick={() => setSearch(!search)}
                 className="cursor-pointer"
                 src={icSearch}
                 alt="ic-search"
               />
-
-              <button onClick={() => setCart(!cart)}>
-                {" "}
-                {/* <CiShoppingCart className="w-6 h-6" />{" "} */}
-              </button>
+              <Image
+                onClick={() => setCart(!cart)}
+                src={icCart}
+                className="cursor-pointer"
+                alt="ic-cart"
+              />
             </div>
-            <div className="menus relative">
-              <div className="relative inline-block text-left">
-                <div>
-                  <button onClick={() => setProfile(!profile)}>
-                    {" "}
-                    <img
-                      className="w-10 h-10 rounded-full"
-                      src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
-                      alt="Rounded avatar"
-                    />
-                  </button>
-                </div>
+            <div className="relative cursor-pointer profile inline-block text-left">
+              <img
+                onClick={() => setProfile(!profile)}
+                className="w-8 h-8 rounded-lg"
+                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
+                alt="Rounded avatar"
+              />
 
-                {profile && (
-                  <div
-                    className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                    role="menu"
-                    aria-orientation="vertical"
-                    aria-labelledby="menu-button"
-                    tabindex="-1"
-                  >
-                    <div className="py-1" role="none">
-                      <a
-                        href="#"
-                        className="text-gray-700 block px-4 py-2 text-sm"
+              {profile && (
+                <div
+                  className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="menu-button"
+                  tabindex="-1"
+                >
+                  <div className="py-1" role="none">
+                    <a
+                      href="#"
+                      className="text-gray-700 block px-4 py-2 text-sm"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-0"
+                    >
+                      Account settings
+                    </a>
+                    <a
+                      href="#"
+                      className="text-gray-700 block px-4 py-2 text-sm"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-1"
+                    >
+                      Support
+                    </a>
+                    <a
+                      href="#"
+                      className="text-gray-700 block px-4 py-2 text-sm"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-2"
+                    >
+                      License
+                    </a>
+                    <form method="POST" action="#" role="none">
+                      <button
+                        type="submit"
+                        className="text-gray-700 block w-full px-4 py-2 text-left text-sm"
                         role="menuitem"
                         tabindex="-1"
-                        id="menu-item-0"
+                        id="menu-item-3"
                       >
-                        Account settings
-                      </a>
-                      <a
-                        href="#"
-                        className="text-gray-700 block px-4 py-2 text-sm"
-                        role="menuitem"
-                        tabindex="-1"
-                        id="menu-item-1"
-                      >
-                        Support
-                      </a>
-                      <a
-                        href="#"
-                        className="text-gray-700 block px-4 py-2 text-sm"
-                        role="menuitem"
-                        tabindex="-1"
-                        id="menu-item-2"
-                      >
-                        License
-                      </a>
-                      <form method="POST" action="#" role="none">
-                        <button
-                          type="submit"
-                          className="text-gray-700 block w-full px-4 py-2 text-left text-sm"
-                          role="menuitem"
-                          tabindex="-1"
-                          id="menu-item-3"
-                        >
-                          Sign out
-                        </button>
-                      </form>
-                    </div>
+                        Sign out
+                      </button>
+                    </form>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
-          </nav>
-        </div>
+          </div>
+        </nav>
       </div>
+
       {/* search */}
       {search && (
         <div
@@ -152,7 +145,7 @@ const NavbarEunoya = () => {
           role="dialog"
           aria-modal="true"
         >
-          <div className="fixed inset-0 backdrop-blur-sm bg-white/30 transition-opacity"></div>
+          <div  onClick={() => setSearch(!search)} className="fixed inset-0 backdrop-blur-sm bg-white/30 transition-opacity"></div>
 
           <form
             onSubmit={onSearch}

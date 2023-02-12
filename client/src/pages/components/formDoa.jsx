@@ -1,6 +1,5 @@
 import { Button, Spinner } from "flowbite-react";
 import { Form, Formik } from "formik";
-import React, { useState } from "react";
 import * as Yup from "yup";
 import FormikControl from "./formikControl";
 import toast, { Toaster } from "react-hot-toast";
@@ -42,11 +41,6 @@ const FormDoa = () => {
     try {
       const response = await axios.post("http://localhost:1337/api/doas", {
         data: values,
-        // data: {
-        //   name: "tomo dari form",
-        //   isHadir: true,
-        //   doa: "semoga yaa",
-        // },
       });
       console.log(response);
     } catch (error) {

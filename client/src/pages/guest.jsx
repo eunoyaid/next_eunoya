@@ -6,12 +6,12 @@ import FavoriteProduct from "./products/favorite";
 
 const Guest = () => {
   return (
-    <Layout>
+
       <div className="main">
         <Header />
         <FavoriteProduct />
       </div>
-    </Layout>
+ 
   );
 };
 

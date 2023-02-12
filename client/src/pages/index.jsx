@@ -1,20 +1,20 @@
 import Head from "next/head";
-import { useState } from "react";
-import Guest from "./guest";
-import User from "./user";
+import Header from "./components/header";
+
+import FavoriteProduct from "./products/favorite";
+
 
 export default function Home() {
 
-  const [session, setSession] = useState()
-
   return (
-   <div className="main">
-    <Head>
-      <title>Home Page</title>
-    </Head>
-  {session?   <User/> :   <Guest/>}
-   
-   </div>
-  )
-}
+    <div className="main">
+      <Head>
+        <title>Home Page</title>
+      </Head>
+    
 
+      <Header />
+      <FavoriteProduct />
+    </div>
+  );
+}

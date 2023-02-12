@@ -21,34 +21,28 @@ const FavoriteProduct = () => {
 
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {data?.map((item) => (
-              <div key={item.id} className="group relative">
-                <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-                  <img
-                    src={item.images[0]}
-                    alt="Front of men&#039;s Basic Tee in black."
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                  />
-                </div>
-                <div className="mt-4 flex justify-between">
-                  <div>
-                    <h3 className="text-sm text-gray-700">
-                      <Link href={`product/${item.id}`}>
-                        <span
-                          aria-hidden="true"
-                          className="absolute inset-0"
-                        ></span>
-                        {item?.brand}
-                      </Link>
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-500">
-                      {item?.category}
+              <Link href={`product/${item.id}`}>
+                <div key={item.id} className="group ">
+                  <div className=" relative w-full overflow-hidden rounded-md bg-gray-200 ">
+                    {/* <img
+                      src={item.images[0]}
+                      alt="Front of men&#039;s Basic Tee in black."
+                      className=" object-cover object-center lg:h-full lg:w-full"
+                    /> */}
+                  </div>
+                  <div className="mt-4 flex justify-between">
+                    <div>
+                      <h3 className="text-sm text-gray-700">{item?.brand}</h3>
+                      <p className="mt-1 text-sm text-gray-500">
+                        {item?.category}
+                      </p>
+                    </div>
+                    <p className="text-sm font-medium text-gray-900">
+                      Rp {item?.price}
                     </p>
                   </div>
-                  <p className="text-sm font-medium text-gray-900">
-                    Rp {item?.price}
-                  </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

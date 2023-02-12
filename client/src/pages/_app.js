@@ -38,6 +38,7 @@ export default function MyApp({ Component, pageProps }) {
     exit: { opacity: 0, x: -100, y: 0 },
 }
   return (
+    <Layout>
     <AnimatePresence>
  
       <motion.div
@@ -52,6 +53,7 @@ export default function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
       </motion.div>
 
-    </AnimatePresence>
+      </AnimatePresence>
+      </Layout>
   )
 }

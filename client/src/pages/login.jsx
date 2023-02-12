@@ -1,34 +1,82 @@
-import React from 'react'
+import { Button, Spinner } from "flowbite-react";
+import { Form, Formik } from "formik";
+import * as Yup from "yup";
+
+import toast, { Toaster } from "react-hot-toast";
+import { FiSend } from "react-icons/fi";
+import axios from "axios";
+import { motion } from "framer-motion";
+import FormikControl from "./components/formikControl";
 
 const Login = () => {
-  return (
-    <div class="min-h-screen bg-purple-400 flex justify-center items-center">
-	<div class="absolute w-60 h-60 rounded-xl bg-purple-300 -top-5 -left-16 z-0 transform rotate-45 hidden md:block">
-	</div>
-	<div class="absolute w-48 h-48 rounded-xl bg-purple-300 -bottom-6 -right-10 transform rotate-12 hidden md:block">
-	</div>
-	<div class="py-12 px-12 bg-white rounded-2xl shadow-xl z-20">
-		<div>
-			<h1 class="text-3xl font-bold text-center mb-4 cursor-pointer">Login Eunoya</h1>
-			<p class="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">Create an
-				account to enjoy all the services without any ads for free!</p>
-		</div>
-		<div class="space-y-4">
-			<input type="text" placeholder="Email Addres" class="block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
-			<input type="password" placeholder="Password" class="block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
-    </div>
-			<div class="text-center mt-6">
-				<button class="py-3 w-64 text-xl text-white bg-purple-400 rounded-2xl">Create Account</button>
-				<p class="mt-4 text-sm">Already Have An Account? <span class="underline cursor-pointer"> Sign In</span>
-				</p>
-			</div>
-		</div>
-		<div class="w-40 h-40 absolute bg-purple-300 rounded-full top-0 right-12 hidden md:block"></div>
-		<div
-			class="w-20 h-40 absolute bg-purple-300 rounded-full bottom-20 left-10 transform rotate-45 hidden md:block">
-		</div>
-	</div>
-  )
-}
+  const initialvalues = {
+    name: "",
+    email: "",
+  };
 
-export default Login
+  const validationSchema = Yup.object({
+    name: Yup.string().required("hmmm seperti nya kamu belum memasukan nama"),
+    email: Yup.string().required("email belum kamu tulis nih"),
+  });
+
+  const onSubmit = async (values, actions) => {
+    console.log(values);
+    try {
+      const response = await axios.post("http://localhost:1337/api/doas", {
+        data: values,
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
+
+    actions.resetForm();
+  };
+
+  return (
+    <div className="@container  flex justify-center items-center w-full mx-auto  min-h-screen ">
+      <Formik
+        initialValues={initialvalues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        {(props) => {
+          const { isSubmitting } = props;
+          return (
+            <Form>
+              <FormikControl
+                control="input"
+                type="text"
+                label="nama"
+                name="name"
+              />
+              <FormikControl
+                control="input"
+                type="email"
+                label="Email"
+                name="email"
+              />
+
+              <Button className="mt-5 w-full" type="submit">
+                {isSubmitting ? (
+                  <Spinner
+                    className="mr-2"
+                    aria-label="Default status example"
+                  />
+                ) : (
+                  <span className="flex items-center">
+                    {" "}
+                    <FiSend className="mr-2" />
+                    Submipt
+                  </span>
+                )}
+              </Button>
+            </Form>
+          );
+        }}
+      </Formik>
+    </div>
+  );
+};
+
+export default Login;

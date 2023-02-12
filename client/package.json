@@ -11,6 +11,7 @@
   "dependencies": {
     "@next/font": "13.1.2",
     "@tailwindcss/container-queries": "^0.1.0",
+    "@tawk.to/tawk-messenger-react": "^2.0.1",
     "axios": "^1.2.2",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.2",
@@ -30,6 +31,7 @@
     "react-images": "^1.2.0-beta.7",
     "react-lightbox-gallery": "^2.0.1",
     "react-photo-gallery": "^8.0.0",
+    "react-whatsapp": "^0.3.0",
     "swr": "^2.0.0",
     "url-loader": "^4.1.1",
     "use-sound": "^4.0.1",
