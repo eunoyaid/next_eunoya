@@ -8,7 +8,7 @@ import ReactWhatsapp from "react-whatsapp";
 
 const Tabbar = () => {
   return (
-    <div className="w-[80%]  py-3 px-5 boder bg-white mx-auto  border-gray-200 rounded-xl shadow-lg  flex md:hidden gap-2 justify-between fixed z-50  bottom-3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+    <div className="w-[80%]  py-3 px-5 boder bg-white mx-auto  border-gray-200 rounded-xl shadow-lg  flex md:hidden gap-2 justify-between fixed z-10  bottom-3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
       <Link href="/" className="icon">
         <Image src={icHome} className="w-6 h-6" alt="icon" />
       </Link>

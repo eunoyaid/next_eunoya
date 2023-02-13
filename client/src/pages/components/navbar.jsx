@@ -8,19 +8,19 @@ import icSearch from "/public/icons/icSearch.svg";
 import icClose from "/public/icons/icClose.svg";
 
 const NavbarEunoya = () => {
-  const [search, setSearch] = useState();
+  // const [search, setSearch] = useState();
   const [profile, setProfile] = useState();
   const [cart, setCart] = useState();
   const [query, setQuery] = useState();
   const router = useRouter();
 
-  const onSearch = (e) => {
-    e.preventDefault();
-    const inputQuery = e.target[0].value;
-    console.log(inputQuery);
-    router.push("products/" + query);
-    setSearch(false);
-  };
+  // const onSearch = (e) => {
+  //   e.preventDefault();
+  //   const inputQuery = e.target[0].value;
+  //   console.log(inputQuery);
+  //   router.push("products/" + query);
+  //   setSearch(false);
+  // };
 
   return (
     <div className=" bg-white py-3 px-5 lg:py-4 lg:px-6 smooth-shadow fixed w-[80%]  z-20 mx-auto rounded-xl border border-gray-100  mt-3 left-0 right-0">
@@ -61,12 +61,12 @@ const NavbarEunoya = () => {
           </div>
           <div className="relative flex items-center">
             <div className=" icons flex gap-4 mx-4">
-              <Image
+              {/* <Image
                 onClick={() => setSearch(!search)}
                 className="cursor-pointer"
                 src={icSearch}
                 alt="ic-search"
-              />
+              /> */}
               <Image
                 onClick={() => setCart(!cart)}
                 src={icCart}
@@ -138,7 +138,7 @@ const NavbarEunoya = () => {
       </div>
 
       {/* search */}
-      {search && (
+      {/* {search && (
         <div
           className="relative z-10"
           aria-labelledby="slide-over-title"
@@ -194,12 +194,12 @@ const NavbarEunoya = () => {
             </div>
           </form>
         </div>
-      )}
+      )} */}
 
       {/* carts */}
       {cart && (
         <div
-          className="relative z-10"
+          className=" absolute z-50"
           aria-labelledby="slide-over-title"
           role="dialog"
           aria-modal="true"
