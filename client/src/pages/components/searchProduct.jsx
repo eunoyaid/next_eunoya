@@ -1,0 +1,28 @@
+import Link from "next/link";
+import React from "react";
+import useSWR from "swr";
+import axios from "axios";
+import CardProduct from "./cardProduct";
+
+const SearchProduct = ({ query }) => {
+  const address = `https://dummyjson.com/products/search?q=${query}`;
+  const fetcher = async (url) =>
+    await axios.get(url).then((res) => res.data.products);
+  const { data, error } = useSWR(address, fetcher);
+  let loading = !data && !error;
+  return (
+    <div className="group relative">
+      {error && error.message}
+      {loading && "loading"}
+      <div className="mx-auto max-w-2xl py-4 px-4 sm:py-14 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div className="mt-6 grid grid-cols-2 gap-y-10 gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+          {data?.map((item) => (
+            <CardProduct item={item} key={ item.id} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SearchProduct;

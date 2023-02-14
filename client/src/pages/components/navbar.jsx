@@ -1,29 +1,31 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import icCart from "/public/icons/icCart.svg";
 import icBrand from "/public/icons/icBrand.svg";
-import icSearch from "/public/icons/icSearch.svg";
-import icClose from "/public/icons/icClose.svg";
+import { BiSun, BiMoon, BiCartAlt } from "react-icons/bi";
+import { BsCart2 } from "react-icons/bs";
+import { useTheme } from "next-themes";
 
 const NavbarEunoya = () => {
-  // const [search, setSearch] = useState();
+  const { theme, setTheme } = useTheme();
   const [profile, setProfile] = useState();
   const [cart, setCart] = useState();
-  const [query, setQuery] = useState();
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+  const currentTheme = theme === "system " ? systemTheme : theme;
 
-  // const onSearch = (e) => {
-  //   e.preventDefault();
-  //   const inputQuery = e.target[0].value;
-  //   console.log(inputQuery);
-  //   router.push("products/" + query);
-  //   setSearch(false);
-  // };
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
-    <div className=" bg-white py-3 px-5 lg:py-4 lg:px-6 smooth-shadow fixed w-[80%]  z-20 mx-auto rounded-xl border border-gray-100  mt-3 left-0 right-0">
+    <div className=" bg-white dark:bg-gray-800 py-3 px-5 lg:py-4 lg:px-6 smooth-shadow fixed w-[80%]  z-20 mx-auto rounded-xl border border-gray-100  dark:border-gray-700 dark:shadow  mt-3 left-0 right-0">
       <div className="flex items-center justify-between   ">
         <div className="flex justify-start font-nunito ">
           <Link href="/">
@@ -36,42 +38,44 @@ const NavbarEunoya = () => {
           <div className=" hidden space-x-6 lg:items-center  lg:flex menus">
             <Link
               href="/"
-              className="font-nunito text-lg  font-medium text-gray-500 hover:text-gray-900"
+              className="font-nunito text-lg  font-medium text-gray-500 dark:text-secondary hover:text-gray-900"
             >
               Home
             </Link>
             <Link
               href="/products"
-              className="font-nunito text-lg font-medium text-gray-500 hover:text-gray-900"
+              className="font-nunito text-lg font-medium text-gray-500 dark:text-secondary hover:text-gray-900"
             >
               Products
             </Link>
             <Link
               href="/blogs"
-              className="font-nunito text-lg font-medium text-gray-500 hover:text-gray-900"
+              className="font-nunito text-lg font-medium text-gray-500 dark:text-secondary hover:text-gray-900"
             >
               Blogs
             </Link>
             <Link
               href="/wedding"
-              className="font-nunito text-lg font-medium text-gray-500 hover:text-gray-900"
+              className="font-nunito text-lg font-medium  text-gray-500 dark:text-secondary hover:text-gray-900"
             >
               Wedding
             </Link>
           </div>
           <div className="relative flex items-center">
-            <div className=" icons flex gap-4 mx-4">
-              {/* <Image
-                onClick={() => setSearch(!search)}
-                className="cursor-pointer"
-                src={icSearch}
-                alt="ic-search"
-              /> */}
-              <Image
+            <div className=" flex gap-2 mx-4 md:mx-6">
+              {currentTheme === "dark" ? (
+                <button onClick={() => setTheme("light")}>
+                  <BiSun className=" icons dark:text-primary " />
+                </button>
+              ) : (
+                <button onClick={() => setTheme("dark")}>
+                  <BiMoon className=" icons  dark:text-primary" />
+                </button>
+              )}
+
+              <BsCart2
                 onClick={() => setCart(!cart)}
-                src={icCart}
-                className="cursor-pointer"
-                alt="ic-cart"
+                className=" icons  dark:text-primary cursor-pointer"
               />
             </div>
             <div className="relative cursor-pointer profile inline-block text-left">
@@ -136,65 +140,6 @@ const NavbarEunoya = () => {
           </div>
         </nav>
       </div>
-
-      {/* search */}
-      {/* {search && (
-        <div
-          className="relative z-10"
-          aria-labelledby="slide-over-title"
-          role="dialog"
-          aria-modal="true"
-        >
-          <div  onClick={() => setSearch(!search)} className="fixed inset-0 backdrop-blur-sm bg-white/30 transition-opacity"></div>
-
-          <form
-            onSubmit={onSearch}
-            className="fixed w-[80%] mx-auto left-0 right-0"
-          >
-            <label
-              htmlFor="default-search"
-              className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-            >
-              Search
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <svg
-                  aria-hidden="true"
-                  className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  ></path>
-                </svg>
-              </div>
-              <input
-                onChange={(e) => {
-                  setQuery(e.target.value);
-                }}
-                type="search"
-                id="default-search"
-                className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search Mockups, Logos..."
-                required
-              />
-            </div>
-            <div
-              onClick={() => setSearch(!search)}
-              className="text-white cursor-pointer absolute right-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
-            >
-              <Image src={icClose} alt="ic-close" />
-            </div>
-          </form>
-        </div>
-      )} */}
 
       {/* carts */}
       {cart && (

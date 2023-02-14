@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-    html{
-        @apply scroll-smooth bg-background
+   body{
+        @apply scroll-smooth bg-background dark:bg-gray-900
     }
     .input {
      @apply bg-gray-50 mb-3 mt-1 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
@@ -30,7 +30,8 @@
     .smooth-shadow{
         box-shadow: 0px 60px 24px rgba(163, 163, 163, 0.01), 0px 34px 20px rgba(163, 163, 163, 0.04), 0px 15px 15px rgba(163, 163, 163, 0.06), 0px 4px 8px rgba(163, 163, 163, 0.07), 0px 0px 0px rgba(163, 163, 163, 0.07);
     }
-    .discount-badge{
-        @apply absolute right-2 top-2 text-[10px] z-10 text-red-500 py-0.5 px-2 inline-block bg-red-200 rounded-lg lowercase
+    
+    .icons{
+        @apply w-6 h-6 text-[#6B5F5E]
     }
   }
