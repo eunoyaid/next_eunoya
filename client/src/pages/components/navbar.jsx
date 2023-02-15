@@ -4,7 +4,8 @@ import Link from "next/link";
 import React, { useState, useCallback, useEffect } from "react";
 import icCart from "/public/icons/icCart.svg";
 import icBrand from "/public/icons/icBrand.svg";
-import { BiSun, BiMoon, BiCartAlt } from "react-icons/bi";
+import { BiSun, BiMoon, } from "react-icons/bi";
+import { TbMoonStars } from "react-icons/tb";
 import { BsCart2 } from "react-icons/bs";
 import { useTheme } from "next-themes";
 
@@ -69,7 +70,7 @@ const NavbarEunoya = () => {
                 </button>
               ) : (
                 <button onClick={() => setTheme("dark")}>
-                  <BiMoon className=" icons  dark:text-primary" />
+                  <TbMoonStars className=" icons  dark:text-primary" />
                 </button>
               )}
 

@@ -18,7 +18,7 @@ const Products = () => {
   return (
     <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
       <div aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
-        <form className=" w-[80%] mt-10 mx-auto">
+        <form   onSubmit={onSearch} className=" w-[80%] mt-10 mx-auto">
           <label
             htmlFor="default-search"
             className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -44,7 +44,7 @@ const Products = () => {
               </svg>
             </div>
             <input
-              onSubmit={onSearch}
+            
               onChange={(e) => {
                 setQuery(e.target.value);
               }}
