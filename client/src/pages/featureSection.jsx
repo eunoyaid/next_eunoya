@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Feature = () => {
+const FeatureSection = () => {
   return (
     <section className="bg-white dark:bg-gray-900">
     <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
@@ -57,4 +57,4 @@ const Feature = () => {
   )
 }
 
-export default Feature
+export default FeatureSection

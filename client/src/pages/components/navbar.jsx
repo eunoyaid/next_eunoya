@@ -2,12 +2,12 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useCallback, useEffect } from "react";
-import icCart from "/public/icons/icCart.svg";
 import icBrand from "/public/icons/icBrand.svg";
 import { BiSun, BiMoon, } from "react-icons/bi";
 import { TbMoonStars } from "react-icons/tb";
 import { BsCart2 } from "react-icons/bs";
 import { useTheme } from "next-themes";
+import { Bag2, Moon, ShoppingBag, ShoppingCart, Sun1 } from "iconsax-react";
 
 const NavbarEunoya = () => {
   const { theme, setTheme } = useTheme();
@@ -26,7 +26,7 @@ const NavbarEunoya = () => {
   }
 
   return (
-    <div className=" bg-white dark:bg-gray-800 py-3 px-5 lg:py-4 lg:px-6 smooth-shadow fixed w-[80%]  z-20 mx-auto rounded-xl border border-gray-100  dark:border-gray-700 dark:shadow  mt-3 left-0 right-0">
+    <div  className=" bg-white dark:bg-gray-800 py-3 px-5 lg:py-4 lg:px-6 smooth-shadow fixed w-[80%]  z-20 mx-auto rounded-xl border border-gray-100  dark:border-gray-700 dark:shadow  mt-3 left-0 right-0">
       <div className="flex items-center justify-between   ">
         <div className="flex justify-start font-nunito ">
           <Link href="/">
@@ -66,18 +66,21 @@ const NavbarEunoya = () => {
             <div className=" flex gap-2 mx-4 md:mx-6">
               {currentTheme === "dark" ? (
                 <button onClick={() => setTheme("light")}>
-                  <BiSun className=" icons dark:text-primary " />
+                  <Sun1 className=" icons dark:text-primary " />
                 </button>
               ) : (
                 <button onClick={() => setTheme("dark")}>
-                  <TbMoonStars className=" icons  dark:text-primary" />
+                  <Moon className="icons  dark:text-primary" />
                 </button>
               )}
 
-              <BsCart2
+              <div className="relative cart">
+                <span className="bg-primary rounded-full px-2 py-1 absolute text-[8px] -right-3  -top-1 text-white" >10</span>
+              <Bag2
                 onClick={() => setCart(!cart)}
-                className=" icons  dark:text-primary cursor-pointer"
+                className=" icons dark:text-primary cursor-pointer"
               />
+              </div>
             </div>
             <div className="relative cursor-pointer profile inline-block text-left">
               <img

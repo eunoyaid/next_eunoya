@@ -1,19 +1,23 @@
 import Head from "next/head";
-import Header from "./components/header";
-import Feature from "./feature";
-import FavoriteProduct from "./products/favorite";
+import BlogSection from "./components/blogSection";
+import CustomThemeSection from "./components/customThemeSection";
+import FeatureSection from "./featureSection";
+import HeroSection from "./heroSection";
+import FavoriteProductSection from "./favoriteProductSection";
 
 export default function Home() {
 
 
   return (
-    <div className="main pt-12">
+    <div >
       <Head>
         <title>Home Page</title>
       </Head>
-      <Header />
-      <Feature/>
-      <FavoriteProduct />
+      <HeroSection/>
+      <FeatureSection/>
+      <FavoriteProductSection />
+      <CustomThemeSection />
+      <BlogSection/>
     </div>
   );
 }

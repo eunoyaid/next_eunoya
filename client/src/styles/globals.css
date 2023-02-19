@@ -32,6 +32,8 @@
     }
     
     .icons{
-        @apply w-6 h-6 text-[#6B5F5E]
+        @apply w-6 h-6 text-[#6B5F5E] hover:text-primary transition
     }
+
+
   }
