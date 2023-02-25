@@ -10,7 +10,7 @@ const CardProduct = ({ item }) => {
             - 10%
           </p>
           <img
-            loading='lazy'
+            loading="lazy"
             src={item.images[0]}
             alt="Front of men&#039;s Basic Tee in black."
             className="h-full w-full  absolute object-cover object-center hover:scale-125 transition  "

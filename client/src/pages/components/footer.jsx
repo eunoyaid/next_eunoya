@@ -12,7 +12,7 @@ const Footer = () => {
   
           <div className="sm:flex sm:items-center sm:justify-between">
           <Image src={icBrandLg} alt={'brand-eunoya'} className='w-32' />
-        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" className="hover:underline">Eunoya</a>
+        <span className="text-xs text-gray-500  sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" className="hover:underline">Eunoya</a>
         </span>
         <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
            <Link href='https://instagram.com'> <Instagram className='icons' /> </Link>
