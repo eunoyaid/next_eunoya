@@ -23,7 +23,7 @@ const BlogSection = () => {
         </p>
       </div>
 
-      <div className="mt-6 overflow-x-scroll h-[300px] lg:overflow-x-auto lg:grid lg:grid-cols-4 flex   gap-6 ">
+      <div className="mt-6 overflow-x-scroll h-[280px] lg:overflow-x-auto lg:grid lg:grid-cols-4 flex   gap-6 ">
         {data?.map((item) => (
           <CardBlog item={item} key={item.id} />
         ))}

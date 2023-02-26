@@ -1,5 +1,4 @@
 import React from "react";
-import CardProduct from "../components/searchProduct";
 import { useState, useEffect } from "react";
 import SearchProduct from "../components/searchProduct";
 import AllProduct from "../components/allProduct";
