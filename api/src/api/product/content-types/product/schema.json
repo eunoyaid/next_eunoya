@@ -35,9 +35,6 @@
     "discount": {
       "type": "decimal"
     },
-    "feature": {
-      "type": "richtext"
-    },
     "category": {
       "type": "relation",
       "relation": "manyToOne",
@@ -58,6 +55,18 @@
     "slug": {
       "type": "uid",
       "targetField": "title"
+    },
+    "features": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::feature.feature",
+      "mappedBy": "products"
+    },
+    "fiturs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::fitur.fitur",
+      "mappedBy": "products"
     }
   }
 }

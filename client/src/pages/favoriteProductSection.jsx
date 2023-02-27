@@ -5,20 +5,16 @@ import CardProduct from "@/pages/components/cardProduct";
 const FavoriteProductSection = () => {
   const address = `${process.env.NEXT_PUBLIC_API_URL}/products?populate=*`;
   const auth = `${process.env.NEXT_PUBLIC_API_TOKEN}`;
-
   async function fetcher(url) {
-    await axios
-      .get(url, {
-        headers: {
-          Authorization: `Bearer ${auth}`,
-        },
-      })
-      .then((res) => res.data);
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${auth}`,
+      },
+    });
+    return response.data.data;
   }
-
   const { data, error } = useSWR(address, fetcher);
   let loading = !data && !error;
-  console.log(error);
 
   return (
     <div className="mx-auto max-w-2xl py-12 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">

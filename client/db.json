@@ -1,0 +1,326 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "attributes": {
+                "title": "Floral",
+                "description": "tema floral ini cocok ini cocok untuk kalia yang menyukai perbaduan antara warna rusric dan ornamen floral",
+                "price": 75000,
+                "discount": 30,
+                "createdAt": "2023-02-20T13:16:58.933Z",
+                "updatedAt": "2023-02-27T02:20:16.488Z",
+                "publishedAt": "2023-02-20T13:17:01.453Z",
+                "slug": "floral",
+                "thumbnail": {
+                    "data": {
+                        "id": 1,
+                        "attributes": {
+                            "name": "tema-floral.png",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 635,
+                            "height": 621,
+                            "formats": {
+                                "thumbnail": {
+                                    "name": "thumbnail_tema-floral.png",
+                                    "hash": "thumbnail_tema_floral_8298be52a6",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "path": null,
+                                    "width": 160,
+                                    "height": 156,
+                                    "size": 3.16,
+                                    "url": "/uploads/thumbnail_tema_floral_8298be52a6.png"
+                                },
+                                "small": {
+                                    "name": "small_tema-floral.png",
+                                    "hash": "small_tema_floral_8298be52a6",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "path": null,
+                                    "width": 500,
+                                    "height": 489,
+                                    "size": 18.63,
+                                    "url": "/uploads/small_tema_floral_8298be52a6.png"
+                                }
+                            },
+                            "hash": "tema_floral_8298be52a6",
+                            "ext": ".png",
+                            "mime": "image/png",
+                            "size": 27.49,
+                            "url": "/uploads/tema_floral_8298be52a6.png",
+                            "previewUrl": null,
+                            "provider": "local",
+                            "provider_metadata": null,
+                            "createdAt": "2023-02-20T13:14:42.213Z",
+                            "updatedAt": "2023-02-20T13:16:00.702Z"
+                        }
+                    }
+                },
+                "category": {
+                    "data": {
+                        "id": 2,
+                        "attributes": {
+                            "title": "website wedding invitation",
+                            "createdAt": "2023-02-20T13:25:28.994Z",
+                            "updatedAt": "2023-02-20T13:25:30.313Z",
+                            "publishedAt": "2023-02-20T13:25:30.308Z"
+                        }
+                    }
+                },
+                "images": {
+                    "data": null
+                }
+            }
+        },
+        {
+            "id": 2,
+            "attributes": {
+                "title": "Rustic",
+                "description": "tema rustik cocok untuk kamu yang menyukai warna coklat",
+                "price": 55000,
+                "discount": 21,
+                "createdAt": "2023-02-20T13:33:15.479Z",
+                "updatedAt": "2023-02-26T01:57:02.496Z",
+                "publishedAt": "2023-02-23T14:38:50.060Z",
+                "slug": null,
+                "thumbnail": {
+                    "data": {
+                        "id": 2,
+                        "attributes": {
+                            "name": "tema_rustic.jpg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 714,
+                            "height": 654,
+                            "formats": {
+                                "thumbnail": {
+                                    "name": "thumbnail_tema_rustic.jpg",
+                                    "hash": "thumbnail_tema_rustic_76f6a95ee6",
+                                    "ext": ".jpg",
+                                    "mime": "image/jpeg",
+                                    "path": null,
+                                    "width": 170,
+                                    "height": 156,
+                                    "size": 3.98,
+                                    "url": "/uploads/thumbnail_tema_rustic_76f6a95ee6.jpg"
+                                },
+                                "small": {
+                                    "name": "small_tema_rustic.jpg",
+                                    "hash": "small_tema_rustic_76f6a95ee6",
+                                    "ext": ".jpg",
+                                    "mime": "image/jpeg",
+                                    "path": null,
+                                    "width": 500,
+                                    "height": 458,
+                                    "size": 18.33,
+                                    "url": "/uploads/small_tema_rustic_76f6a95ee6.jpg"
+                                }
+                            },
+                            "hash": "tema_rustic_76f6a95ee6",
+                            "ext": ".jpg",
+                            "mime": "image/jpeg",
+                            "size": 29.75,
+                            "url": "/uploads/tema_rustic_76f6a95ee6.jpg",
+                            "previewUrl": null,
+                            "provider": "local",
+                            "provider_metadata": null,
+                            "createdAt": "2023-02-20T13:32:53.719Z",
+                            "updatedAt": "2023-02-20T13:32:53.719Z"
+                        }
+                    }
+                },
+                "category": {
+                    "data": {
+                        "id": 2,
+                        "attributes": {
+                            "title": "website wedding invitation",
+                            "createdAt": "2023-02-20T13:25:28.994Z",
+                            "updatedAt": "2023-02-20T13:25:30.313Z",
+                            "publishedAt": "2023-02-20T13:25:30.308Z"
+                        }
+                    }
+                },
+                "images": {
+                    "data": null
+                }
+            }
+        },
+        {
+            "id": 3,
+            "attributes": {
+                "title": "mandala",
+                "description": "tema mandala ini cocok untuk kamu yang suka dengan warna hitam yang di padukan dengan warna keemasan",
+                "price": 75000,
+                "discount": 25,
+                "createdAt": "2023-02-26T04:50:20.449Z",
+                "updatedAt": "2023-02-27T02:20:28.112Z",
+                "publishedAt": "2023-02-26T04:50:23.469Z",
+                "slug": "mandala",
+                "thumbnail": {
+                    "data": {
+                        "id": 4,
+                        "attributes": {
+                            "name": "tema_mandala.jpg",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 714,
+                            "height": 644,
+                            "formats": {
+                                "thumbnail": {
+                                    "name": "thumbnail_tema_mandala.jpg",
+                                    "hash": "thumbnail_tema_mandala_677421d4da",
+                                    "ext": ".jpg",
+                                    "mime": "image/jpeg",
+                                    "path": null,
+                                    "width": 173,
+                                    "height": 156,
+                                    "size": 5.87,
+                                    "url": "/uploads/thumbnail_tema_mandala_677421d4da.jpg"
+                                },
+                                "small": {
+                                    "name": "small_tema_mandala.jpg",
+                                    "hash": "small_tema_mandala_677421d4da",
+                                    "ext": ".jpg",
+                                    "mime": "image/jpeg",
+                                    "path": null,
+                                    "width": 500,
+                                    "height": 451,
+                                    "size": 35.06,
+                                    "url": "/uploads/small_tema_mandala_677421d4da.jpg"
+                                }
+                            },
+                            "hash": "tema_mandala_677421d4da",
+                            "ext": ".jpg",
+                            "mime": "image/jpeg",
+                            "size": 60.55,
+                            "url": "/uploads/tema_mandala_677421d4da.jpg",
+                            "previewUrl": null,
+                            "provider": "local",
+                            "provider_metadata": null,
+                            "createdAt": "2023-02-26T04:50:12.643Z",
+                            "updatedAt": "2023-02-26T04:50:12.643Z"
+                        }
+                    }
+                },
+                "category": {
+                    "data": {
+                        "id": 2,
+                        "attributes": {
+                            "title": "website wedding invitation",
+                            "createdAt": "2023-02-20T13:25:28.994Z",
+                            "updatedAt": "2023-02-20T13:25:30.313Z",
+                            "publishedAt": "2023-02-20T13:25:30.308Z"
+                        }
+                    }
+                },
+                "images": {
+                    "data": null
+                }
+            }
+        },
+        {
+            "id": 4,
+            "attributes": {
+                "title": "sweet mist",
+                "description": "tema ini cocok untuk kamu yang menyukai warna dasar putih yang di perpadukan dengan warna pink yang manis",
+                "price": 75000,
+                "discount": 25,
+                "createdAt": "2023-02-26T04:51:23.441Z",
+                "updatedAt": "2023-02-26T04:51:59.706Z",
+                "publishedAt": "2023-02-26T04:51:59.702Z",
+                "slug": "sm",
+                "thumbnail": {
+                    "data": {
+                        "id": 5,
+                        "attributes": {
+                            "name": "tema_minimalist_floral.png",
+                            "alternativeText": null,
+                            "caption": null,
+                            "width": 1028,
+                            "height": 896,
+                            "formats": {
+                                "thumbnail": {
+                                    "name": "thumbnail_tema_minimalist_floral.png",
+                                    "hash": "thumbnail_tema_minimalist_floral_959f195215",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "path": null,
+                                    "width": 179,
+                                    "height": 156,
+                                    "size": 25.61,
+                                    "url": "/uploads/thumbnail_tema_minimalist_floral_959f195215.png"
+                                },
+                                "small": {
+                                    "name": "small_tema_minimalist_floral.png",
+                                    "hash": "small_tema_minimalist_floral_959f195215",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "path": null,
+                                    "width": 500,
+                                    "height": 436,
+                                    "size": 142.49,
+                                    "url": "/uploads/small_tema_minimalist_floral_959f195215.png"
+                                },
+                                "medium": {
+                                    "name": "medium_tema_minimalist_floral.png",
+                                    "hash": "medium_tema_minimalist_floral_959f195215",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "path": null,
+                                    "width": 750,
+                                    "height": 654,
+                                    "size": 284.14,
+                                    "url": "/uploads/medium_tema_minimalist_floral_959f195215.png"
+                                },
+                                "large": {
+                                    "name": "large_tema_minimalist_floral.png",
+                                    "hash": "large_tema_minimalist_floral_959f195215",
+                                    "ext": ".png",
+                                    "mime": "image/png",
+                                    "path": null,
+                                    "width": 1000,
+                                    "height": 872,
+                                    "size": 454.84,
+                                    "url": "/uploads/large_tema_minimalist_floral_959f195215.png"
+                                }
+                            },
+                            "hash": "tema_minimalist_floral_959f195215",
+                            "ext": ".png",
+                            "mime": "image/png",
+                            "size": 89.89,
+                            "url": "/uploads/tema_minimalist_floral_959f195215.png",
+                            "previewUrl": null,
+                            "provider": "local",
+                            "provider_metadata": null,
+                            "createdAt": "2023-02-26T04:50:13.021Z",
+                            "updatedAt": "2023-02-26T04:51:46.593Z"
+                        }
+                    }
+                },
+                "category": {
+                    "data": {
+                        "id": 2,
+                        "attributes": {
+                            "title": "website wedding invitation",
+                            "createdAt": "2023-02-20T13:25:28.994Z",
+                            "updatedAt": "2023-02-20T13:25:30.313Z",
+                            "publishedAt": "2023-02-20T13:25:30.308Z"
+                        }
+                    }
+                },
+                "images": {
+                    "data": null
+                }
+            }
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "page": 1,
+            "pageSize": 25,
+            "pageCount": 1,
+            "total": 4
+        }
+    }
+}
