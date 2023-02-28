@@ -3,33 +3,9 @@ import "@/styles/globals.css";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "next-themes";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+
 import Layout from "./components/layout";
 
-// function Loading() {
-// const router= useRouter()
-// const[loading,setLoading] = useState(false)
-//  useEffect(()=>{
-//   const handleStart=(url) => (url !== router.asPath) &&(setLoading(true))
-//   const handleComplate=(url) => (url === router.asPath) && setTimeout(() => {setLoading(false)
-//   },5000)
-//   router.events.on('routerChangeStart', handleStart)
-//   router.events.on('routerChangeComplate', handleComplate)
-//   router.events.on('routerChangeError', handleComplate)
-//   return () => {
-//     router.events.off('routerChangeStart', handleStart)
-//     router.events.off('routerChangeComplate', handleComplate)
-//     router.events.off('routerChangeError', handleComplate)
-//   }
-
-//  })
-
-//  return loading && (
-//   <div>
-//     <p>loading...</p>
-//   </div>
-//  )
-// }
 
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -40,7 +16,7 @@ export default function MyApp({ Component, pageProps }) {
   };
   return (
     <ThemeProvider  attribute="class" >
-      <Layout>
+     
         <AnimatePresence>
           <motion.div
             key={router.route}
@@ -53,7 +29,7 @@ export default function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           </motion.div>
         </AnimatePresence>
-      </Layout>
+   
     </ThemeProvider>
   );
 }

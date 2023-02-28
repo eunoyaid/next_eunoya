@@ -19,7 +19,7 @@
         @apply mb-4
     }
     label{
-        @apply capitalize
+        @apply capitalize text-sm
     }
     .form-wrapper{
         @apply rounded-xl border border-gray-200 shadow-lg p-5 mx-auto block

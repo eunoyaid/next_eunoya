@@ -1,7 +1,7 @@
 import { Button, Spinner } from "flowbite-react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import FormikControl from "./formikControl";
+import FormikControl from "./utils/form/formikControl";
 import toast, { Toaster } from "react-hot-toast";
 import { FiSend } from "react-icons/fi";
 import axios from "axios";
