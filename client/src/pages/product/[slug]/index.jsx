@@ -1,12 +1,15 @@
+import ModalOrder from "@/pages/components/modalOrder";
+import BtnCart from "@/pages/components/utils/btnCart";
 import CustomButton from "@/pages/components/utils/customButton";
 import axios from "axios";
-import { Button } from "flowbite-react";
+import { Eye } from "iconsax-react";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 import { BiCheck } from "react-icons/bi";
 import useSWR from "swr";
 
 const DetailsProduct = () => {
+  const [modal, setModal] = useState();
   const router = useRouter();
   const { slug } = router.query;
   const address = `${process.env.NEXT_PUBLIC_API_URL}/products/?filters[slug][$eq]=${slug}&populate=*`;
@@ -23,6 +26,12 @@ const DetailsProduct = () => {
   let loading = !data && !error;
   console.log(data);
 
+  // open modal order
+  const openModal = () => {
+    // setModal((modal = true));
+    console.log("test");
+  };
+
   return (
     <>
       {data?.map((item) => (
@@ -32,6 +41,7 @@ const DetailsProduct = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="left mb-5  relative overflow-hidden h-80 rounded-xl">
+              <Eye className="absolute h-10 w-10 animate-pulse bg-secondary rounded-full p-2 text-primary top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10" />
               <img
                 className="absolute object-cover w-full h-full "
                 src={
@@ -80,45 +90,38 @@ const DetailsProduct = () => {
                   </div>
                   <hr className="my-3" />
                   <div className="feature-list">
-                    {item.attributes.feature}
-
-                    {/* <li className="gap-2 flex items-center mb-3">
-                        <BiCheck className="text-primary  items-center bg-secondary rounded-full border border-primary h-4 w-4 flex" />
-                        <p className="text-sm capitalize  ">romantic music</p>
-                      </li>
-                      <li className="gap-2 flex items-center mb-3">
-                        <BiCheck className="text-primary  items-center bg-secondary rounded-full border border-primary h-4 w-4 flex" />
-                        <p className="text-sm capitalize  ">gallery foto</p>
-                      </li>
-                      <li className="gap-2 flex items-center mb-3">
-                        <BiCheck className="text-primary  items-center bg-secondary rounded-full border border-primary h-4 w-4 flex" />
-                        <p className="text-sm capitalize  ">custom durasi</p>
-                      </li>
-                      <li className="gap-2 flex items-center mb-3">
-                        <BiCheck className="text-primary  items-center bg-secondary rounded-full border border-primary h-4 w-4 flex" />
-                        <p className="text-sm capitalize  ">navigasi map </p>
-                      </li>
-                      <li className="gap-2 flex items-center mb-3">
-                        <BiCheck className="text-primary  items-center bg-secondary rounded-full border border-primary h-4 w-4 flex" />
-                        <p className="text-sm capitalize  ">animasi keren</p>
-                      </li>
-                      <li className="gap-2 flex items-center mb-3">
-                        <BiCheck className="text-primary  items-center bg-secondary rounded-full border border-primary h-4 w-4 flex" />
-                        <p className="text-sm capitalize  ">3x revisi</p>
-                      </li> */}
+                    <ul>
+                      {item.attributes.features?.data.map((value, index) => (
+                        <li
+                          key={value.id}
+                          className="gap-2 flex items-center mb-3"
+                        >
+                          <BiCheck className="text-primary  items-center bg-secondary rounded-full border border-primary h-4 w-4 flex" />
+                          <p className="text-sm capitalize  ">
+                            {" "}
+                            {value.attributes?.title}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <CustomButton>Order Now</CustomButton>
+                  <div className="add-shop flex  gap-3">
+                    <CustomButton onClick={openModal}>Order Now</CustomButton>
+                    <BtnCart />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <ModalOrder />
           <div className="desc mt-10">
             <h3 className="capitalize font-nunito font-semibold text-center">
               lemme tell you a story about this theme
             </h3>
             <p className="desc text-sm mt-3"> {item.attributes.description} </p>
           </div>
+
           <div className="testimonial mt-10">
             <h3 className="capitalize font-nunito font-semibold text-center">
               what they say

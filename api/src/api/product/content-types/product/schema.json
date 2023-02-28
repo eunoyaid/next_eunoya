@@ -60,13 +60,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::feature.feature",
-      "mappedBy": "products"
-    },
-    "fiturs": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::fitur.fitur",
-      "mappedBy": "products"
+      "inversedBy": "products"
     }
   }
 }
