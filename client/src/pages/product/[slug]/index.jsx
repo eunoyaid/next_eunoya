@@ -40,7 +40,7 @@ const DetailsProduct = () => {
           className="mx-auto  max-w-2xl pt-24 pb-4 px-4 sm:py-14 sm:px-6 lg:max-w-3xl lg:pt-36 lg:px-8"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div className="left mb-5  relative overflow-hidden h-80 rounded-xl">
+            <div className="left mb-5  relative overflow-hidden h-96 rounded-xl">
               <Eye className="absolute h-10 w-10 animate-pulse bg-secondary rounded-full p-2 text-primary top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10" />
               <img
                 className="absolute object-cover w-full h-full "
@@ -89,7 +89,7 @@ const DetailsProduct = () => {
                     )}
                   </div>
                   <hr className="my-3" />
-                  <div className="feature-list">
+                  <div className="feature-list my-5">
                     <ul>
                       {item.attributes.features?.data.map((value, index) => (
                         <li
@@ -107,7 +107,7 @@ const DetailsProduct = () => {
                   </div>
 
                   <div className="add-shop flex  gap-3">
-                    <CustomButton onClick={openModal}>Order Now</CustomButton>
+                    <CustomButton> Order Now</CustomButton>
                     <BtnCart />
                   </div>
                 </div>
@@ -116,14 +116,14 @@ const DetailsProduct = () => {
           </div>
           <ModalOrder />
           <div className="desc mt-10">
-            <h3 className="capitalize font-nunito font-semibold text-center">
+            <h3 className="capitalize font-nunito text-lg font-semibold text-center">
               lemme tell you a story about this theme
             </h3>
             <p className="desc text-sm mt-3"> {item.attributes.description} </p>
           </div>
 
-          <div className="testimonial mt-10">
-            <h3 className="capitalize font-nunito font-semibold text-center">
+          <div className="testimonial  mt-10">
+            <h3 className="capitalize  text-lg font-nunito font-semibold text-center">
               what they say
             </h3>
             <ul className="list-testi mt-3 h-52 overflow-y-scroll ">

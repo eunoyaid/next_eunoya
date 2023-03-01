@@ -3,7 +3,8 @@ import React from "react";
 
 const customButton = ({ children }) => {
   return (
-    <button type="submit"
+    <button
+      type="submit"
       className={` w-full bg-primary py-3  text-white rounded-lg  flex gap-3 justify-center`}
     >
       {/* <ShoppingCart /> */}

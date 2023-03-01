@@ -1,3 +1,4 @@
+import UserProvider from "@/context/user";
 import "@/styles/globals.css";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,8 +17,7 @@ export default function MyApp({ Component, pageProps }) {
   };
   return (
     <ThemeProvider  attribute="class" >
-     
-        <AnimatePresence>
+     <AnimatePresence>
           <motion.div
             key={router.route}
             variants={variants} // Pass the variant object into Framer Motion
@@ -26,9 +26,14 @@ export default function MyApp({ Component, pageProps }) {
             exit="exit" // Exit state (used later) to variants.exit
             transition={{ type: "linear" }} // Set the transition to linear
           >
+    <Layout>
+
             <Component {...pageProps} />
+    </Layout>
+        
           </motion.div>
         </AnimatePresence>
+ 
    
     </ThemeProvider>
   );
