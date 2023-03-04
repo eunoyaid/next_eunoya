@@ -12,6 +12,7 @@ export default function Home() {
         <title>Home Page</title>
       </Head>
       <HeroSection />
+
       <FeatureSection />
       <FavoriteProductSection />
       <CustomThemeSection />

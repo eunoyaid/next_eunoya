@@ -1,7 +1,6 @@
-import { Button, Spinner } from "flowbite-react";
+import { Spinner } from "flowbite-react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { FiSend } from "react-icons/fi";
 import axios from "axios";
 import FormikControl from "../components/utils/form/formikControl";
 import icBrandLg from "/public/icons/icBrandLg.svg";
@@ -9,34 +8,69 @@ import Image from "next/image";
 import { Google, Login, Facebook } from "iconsax-react";
 import CustomButton from "../components/utils/customButton";
 import Link from "next/link";
+import nookies from "nookies";
+import { useRouter } from "next/router";
+import toast, { Toaster } from "react-hot-toast";
+import Head from "next/head";
+
+export async function getServerSideProps(ctx) {
+  const cookies = nookies.get(ctx);
+  if (cookies.token) {
+    return {
+      redirect: {
+        destination: "/",
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}
 
 const LoginPage = () => {
+  const Router = useRouter();
+
   const initialvalues = {
-    email: "",
+    identifier: "",
     password: "",
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string().required("uups, field di perlukan disini "),
-    password: Yup.string().required("uups, field di perlukan disini"),
+    identifier: Yup.string().required("uups, email di perlukan disini "),
+    password: Yup.string().required("uups, password di perlukan disini"),
   });
 
-  const onSubmit = async (values, actions) => {
-    console.log(values);
+  const doLogin = async (values, actions, ctx) => {
     try {
-      const response = await axios.post("http://localhost:1337/api/doas", {
-        data: values,
-      });
-      console.log(response);
-    } catch (error) {
-      console.log(error.message);
-    }
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/local`,
+        values
+      );
 
-    actions.resetForm();
+      const cookies = nookies.get(ctx);
+      {
+        response.data.jwt &&
+          nookies.set(ctx, "token", response.data.jwt, {
+            maxAge: 30 * 24 * 60 * 60,
+            path: "/",
+          });
+        Router.replace("/");
+        return { cookies };
+      }
+    } catch (error) {
+      const ToastError = () =>
+        toast.error("username atau password mungkin salah");
+      ToastError();
+    }
   };
 
   return (
     <div className=" bg-background w-full mx-auto flex justify-center items-center min-h-screen ">
+      <Head>
+        <title>Login Page</title>
+      </Head>
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="wrapper bg-white px-6 py-8 smooth-shadow max-w-xs md:max-w-md border border-border-card rounded-xl   ">
         <div className="header  mb-6">
           <Image
@@ -55,7 +89,7 @@ const LoginPage = () => {
         <Formik
           initialValues={initialvalues}
           validationSchema={validationSchema}
-          onSubmit={onSubmit}
+          onSubmit={doLogin}
         >
           {(props) => {
             const { isSubmitting } = props;
@@ -66,9 +100,10 @@ const LoginPage = () => {
                     control="input"
                     type="email"
                     label="email"
-                    name="email"
+                    name="identifier"
                   />
                   <FormikControl
+                    autocomplete="on"
                     control="input"
                     type="password"
                     label="password"
@@ -81,20 +116,20 @@ const LoginPage = () => {
                   </div>
 
                   <div className="btn-login mt-8">
-                        <CustomButton className="mt-10 w-full" type="submit">
-                    {isSubmitting ? (
-                      <Spinner
-                        className="mr-2"
-                        aria-label="Default status example"
-                      />
-                    ) : (
-                      <span className="flex  text-sm items-center">
-                        <Login className="mr-2 " />
-                    Login
-                      </span>
-                    )}
-                  </CustomButton>
-                 </div>
+                    <CustomButton className="mt-10 w-full" type="submit">
+                      {isSubmitting ? (
+                        <Spinner
+                          className="mr-2"
+                          aria-label="Default status example"
+                        />
+                      ) : (
+                        <span className="flex  text-sm items-center">
+                          <Login className="mr-2 " />
+                          Login
+                        </span>
+                      )}
+                    </CustomButton>
+                  </div>
                 </Form>
 
                 <div className="inline-flex items-center justify-center w-full">
@@ -105,16 +140,28 @@ const LoginPage = () => {
                 </div>
 
                 <div className="btn-login  flex gap-2">
-                  <button className="w-full border border-border-card py-3 text-xs rounded-lg hover:bg-gray-100 transition  flex gap-3 justify-center items-center">
-                    <Google className="text-red-500" /> 
-                  </button>
+                  <Link
+                    href={`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/connect/github`}
+                    className="w-full border border-border-card py-3 text-xs rounded-lg hover:bg-gray-100 transition  flex gap-3 justify-center items-center"
+                  >
+                    github
+                  </Link>
+                  <Link
+                    href={`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/connect/google`}
+                    className="w-full border border-border-card py-3 text-xs rounded-lg hover:bg-gray-100 transition  flex gap-3 justify-center items-center"
+                  >
+                    <Google className="text-red-500" />
+                  </Link>
                   <button className="w-full border border-border-card py-3 text-xs rounded-lg hover:bg-gray-100 transition flex gap-3 justify-center items-center">
-                    <Facebook className="text-blue-500" /> 
+                    <Facebook className="text-blue-500" />
                   </button>
                 </div>
                 <div className="text-center text-xs mt-5 text-gray-500">
                   belum punya akun?
-                  <Link href='/register' className="text-blue-500 "> daftar disini</Link>
+                  <Link href="/register" className="text-blue-500 ">
+                    {" "}
+                    daftar disini
+                  </Link>
                 </div>
               </>
             );

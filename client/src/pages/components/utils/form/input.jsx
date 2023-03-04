@@ -3,7 +3,7 @@ import React from "react";
 import TextError from "./textError";
 
 const Input = (props) => {
-  const { label, name, ...rest } = props;
+  const { label, name, autocomplete, ...rest } = props;
   const [field, meta] = useField(props);
 
   return (
@@ -12,6 +12,7 @@ const Input = (props) => {
       <Field
         id={name}
         name={name}
+        autoComplete={autocomplete}
         {...rest}
         className={meta.touched && meta.error ? "input-error" : "input"}
       />
