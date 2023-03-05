@@ -2175,6 +2175,11 @@ form-data@^4.0.0:
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
+form-ratings@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/form-ratings/-/form-ratings-0.3.0.tgz#18b55b1bb03da1504b4797ac292f60e3191c5404"
+  integrity sha512-CdbeYmLn5o3OihOYLZm7QdXYPMOn3BGkqdlILpPRuKL8Ip++HVHWJNouCkHc22Q3u6xBKozw7mslcwE/HxFh5g==
+
 formik@^2.2.9:
   version "2.2.9"
   resolved "https://registry.npmjs.org/formik/-/formik-2.2.9.tgz"

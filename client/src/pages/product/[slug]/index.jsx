@@ -26,11 +26,7 @@ const DetailsProduct = () => {
   let loading = !data && !error;
   console.log(data);
 
-  // open modal order
-  const openModal = () => {
-    // setModal((modal = true));
-    console.log("test");
-  };
+
 
   return (
     <>
@@ -69,7 +65,7 @@ const DetailsProduct = () => {
                       ""
                     )}
                   </div>
-                  <p className="text-xs  text-primary my-2  dark:text-gray-800 py-1 px-2 inline-block bg-secondary dark:bg-gray-50 rounded-lg lowercase ">
+                  <p className="category ">
                     {item.attributes.category.data.attributes.title}
                   </p>
                   <div className="detail-price flex gap-3 items-center">

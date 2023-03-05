@@ -20,6 +20,7 @@
     "file-loader": "^6.2.0",
     "flowbite": "^1.6.2",
     "flowbite-react": "^0.3.7",
+    "form-ratings": "^0.3.0",
     "formik": "^2.2.9",
     "framer-motion": "^9.0.1",
     "iconsax-react": "^0.0.8",

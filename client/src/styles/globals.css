@@ -34,6 +34,17 @@
     .icons{
         @apply w-6 h-6 text-[#6B5F5E] hover:text-primary transition
     }
-
+.container{
+    @apply mx-auto  max-w-2xl pt-24 pb-4 px-4 sm:py-14 sm:px-6 lg:max-w-3xl lg:pt-36 lg:px-8
+}
+.category{
+    @apply text-xs  text-primary my-2  dark:text-gray-800 py-1 px-2 inline-block bg-secondary dark:bg-gray-50 rounded-lg lowercase
+}
+.on {
+   @apply text-yellow-300
+  }
+  .off {
+    color: #ccc;
+  }
 
   }
