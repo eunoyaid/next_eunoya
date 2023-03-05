@@ -12,11 +12,10 @@ export default function Home() {
         <title>Home Page</title>
       </Head>
       <HeroSection />
-
-      <FeatureSection />
+      {/* <FeatureSection />
       <FavoriteProductSection />
       <CustomThemeSection />
-      <BlogSection />
+      <BlogSection /> */}
     </div>
   );
 }

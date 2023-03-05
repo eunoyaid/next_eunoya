@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useState, useCallback, useEffect } from "react";
 import icBrand from "/public/icons/icBrand.svg";
 import { useTheme } from "next-themes";
-import { Bag2, Moon, ShoppingBag, ShoppingCart, Sun1 } from "iconsax-react";
+import { Bag2, BoxRemove, Moon, ShoppingBag, ShoppingCart, Sun1 } from "iconsax-react";
 
 const NavbarEunoya = () => {
   const { theme, setTheme } = useTheme();
@@ -157,14 +157,14 @@ const NavbarEunoya = () => {
             <div className="absolute inset-0 overflow-hidden">
               <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
                 <div className="pointer-events-auto w-screen max-w-md">
-                  <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+                  <div className="flex flex-col h-full bg-white shadow-xl">
                     <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                       <div className="flex items-start justify-between">
                         <h2
-                          className="text-lg font-medium text-gray-900"
+                          className="text-lg font-nunito font-semibold text-gray-900"
                           id="slide-over-title"
                         >
-                          Shopping cart
+                          Keranjang Belanja
                         </h2>
                         <div className="ml-3 flex h-7 items-center">
                           <button
@@ -193,16 +193,16 @@ const NavbarEunoya = () => {
                         </div>
                       </div>
 
-                      <div className="mt-8">
+                      <div className="mt-8  overflow-y-scroll">
                         <div className="flow-root">
                           <ul
                             role="list"
-                            className="-my-6 divide-y divide-gray-200"
+                            className=""
                           >
-                            <li className="flex py-6">
-                              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                            <li className="flex mb-3  border border-border-card rounded-lg p-3">
+                              <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
-                                  src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
+                                  src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                                   alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                                   className="h-full w-full object-cover object-center"
                                 />
@@ -214,32 +214,21 @@ const NavbarEunoya = () => {
                                     <h3>
                                       <a href="#">Throwback Hip Bag</a>
                                     </h3>
-                                    <p className="ml-4">$90.00</p>
-                                  </div>
-                                  <p className="mt-1 text-sm text-gray-500">
-                                    Salmon
-                                  </p>
-                                </div>
-                                <div className="flex flex-1 items-end justify-between text-sm">
-                                  <p className="text-gray-500">Qty 1</p>
+                                  
+                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500"/>
+                                  </div>                            
+                                  <p className="mt-1 ">
+                                 Rp 75000 
+                                    </p>
 
-                                  <div className="flex">
-                                    <button
-                                      type="button"
-                                      className="font-medium text-indigo-600 hover:text-indigo-500"
-                                    >
-                                      Remove
-                                    </button>
-                                  </div>
-                                </div>
+                                </div>                   
                               </div>
-                            </li>
-
-                            <li className="flex py-6">
-                              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                            </li>                     
+                            <li className="flex mb-3  border border-border-card rounded-lg p-3">
+                              <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
-                                  src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg"
-                                  alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch."
+                                  src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                  alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                                   className="h-full w-full object-cover object-center"
                                 />
                               </div>
@@ -248,28 +237,118 @@ const NavbarEunoya = () => {
                                 <div>
                                   <div className="flex justify-between text-base font-medium text-gray-900">
                                     <h3>
-                                      <a href="#">Medium Stuff Satchel</a>
+                                      <a href="#">Throwback Hip Bag</a>
                                     </h3>
-                                    <p className="ml-4">$32.00</p>
-                                  </div>
-                                  <p className="mt-1 text-sm text-gray-500">
-                                    Blue
-                                  </p>
-                                </div>
-                                <div className="flex flex-1 items-end justify-between text-sm">
-                                  <p className="text-gray-500">Qty 1</p>
+                                  
+                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500"/>
+                                  </div>                            
+                                  <p className="mt-1 ">
+                                 Rp 75000 
+                                    </p>
 
-                                  <div className="flex">
-                                    <button
-                                      type="button"
-                                      className="font-medium text-indigo-600 hover:text-indigo-500"
-                                    >
-                                      Remove
-                                    </button>
-                                  </div>
-                                </div>
+                                </div>                   
                               </div>
-                            </li>
+                            </li>                     
+                            <li className="flex mb-3  border border-border-card rounded-lg p-3">
+                              <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
+                                <img
+                                  src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                  alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                                  className="h-full w-full object-cover object-center"
+                                />
+                              </div>
+
+                              <div className="ml-4 flex flex-1 flex-col">
+                                <div>
+                                  <div className="flex justify-between text-base font-medium text-gray-900">
+                                    <h3>
+                                      <a href="#">Throwback Hip Bag</a>
+                                    </h3>
+                                  
+                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500"/>
+                                  </div>                            
+                                  <p className="mt-1 ">
+                                 Rp 75000 
+                                    </p>
+
+                                </div>                   
+                              </div>
+                            </li>                     
+                            <li className="flex mb-3  border border-border-card rounded-lg p-3">
+                              <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
+                                <img
+                                  src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                  alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                                  className="h-full w-full object-cover object-center"
+                                />
+                              </div>
+
+                              <div className="ml-4 flex flex-1 flex-col">
+                                <div>
+                                  <div className="flex justify-between text-base font-medium text-gray-900">
+                                    <h3>
+                                      <a href="#">Throwback Hip Bag</a>
+                                    </h3>
+                                  
+                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500"/>
+                                  </div>                            
+                                  <p className="mt-1 ">
+                                 Rp 75000 
+                                    </p>
+
+                                </div>                   
+                              </div>
+                            </li>                     
+                            <li className="flex mb-3  border border-border-card rounded-lg p-3">
+                              <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
+                                <img
+                                  src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                  alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                                  className="h-full w-full object-cover object-center"
+                                />
+                              </div>
+
+                              <div className="ml-4 flex flex-1 flex-col">
+                                <div>
+                                  <div className="flex justify-between text-base font-medium text-gray-900">
+                                    <h3>
+                                      <a href="#">Throwback Hip Bag</a>
+                                    </h3>
+                                  
+                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500"/>
+                                  </div>                            
+                                  <p className="mt-1 ">
+                                 Rp 75000 
+                                    </p>
+
+                                </div>                   
+                              </div>
+                            </li>                     
+                            <li className="flex mb-3  border border-border-card rounded-lg p-3">
+                              <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
+                                <img
+                                  src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                  alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                                  className="h-full w-full object-cover object-center"
+                                />
+                              </div>
+
+                              <div className="ml-4 flex flex-1 flex-col">
+                                <div>
+                                  <div className="flex justify-between text-base font-medium text-gray-900">
+                                    <h3>
+                                      <a href="#">Throwback Hip Bag</a>
+                                    </h3>
+                                  
+                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500"/>
+                                  </div>                            
+                                  <p className="mt-1 ">
+                                 Rp 75000 
+                                    </p>
+
+                                </div>                   
+                              </div>
+                            </li>                     
                           </ul>
                         </div>
                       </div>

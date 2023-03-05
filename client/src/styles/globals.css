@@ -40,11 +40,6 @@
 .category{
     @apply text-xs  text-primary my-2  dark:text-gray-800 py-1 px-2 inline-block bg-secondary dark:bg-gray-50 rounded-lg lowercase
 }
-.on {
-   @apply text-yellow-300
-  }
-  .off {
-    color: #ccc;
-  }
+
 
   }

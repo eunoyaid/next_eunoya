@@ -26,6 +26,6 @@ module.exports = {
     require("flowbite/plugin"),
     require("@tailwindcss/container-queries"),
     require("@tailwindcss/aspect-ratio"),
-    require('@tailwindcss/forms'),
+    // require('@tailwindcss/forms'),
   ],
 };
