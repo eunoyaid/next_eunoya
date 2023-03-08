@@ -2,7 +2,6 @@ import { ErrorMessage, Field, useField } from "formik";
 import React from "react";
 import TextError from "./textError";
 
-
 const Input = (props) => {
   const { label, name, autocomplete, ...rest } = props;
   const [field, meta] = useField(props);
@@ -20,4 +19,5 @@ const Input = (props) => {
       <ErrorMessage name={name} component={TextError} />
     </div>
   );
-};gi
+};
+export default Input;
