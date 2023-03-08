@@ -118,7 +118,7 @@ export default function AccordionCustom() {
 
         <AccordionItem
           icon={<MessageFavorite className="mr-2" />}
-          header="Ulasan Produk"
+          header="Ulasan Produk (20)"
         >
           <ul className="list-review max-h-56 overflow-y-scroll">
             <li className="review mb-4">
