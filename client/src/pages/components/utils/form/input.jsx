@@ -20,4 +20,5 @@ const Input = (props) => {
       <ErrorMessage name={name} component={TextError} />
     </div>
   );
-};gi
+};
+export default Input

@@ -24,9 +24,9 @@ export default function MyApp({ Component, pageProps }) {
           exit="exit" // Exit state (used later) to variants.exit
           transition={{ type: "linear" }} // Set the transition to linear
         >
-          <Layout>
+          {/* <Layout> */}
             <Component {...pageProps} />
-          </Layout>
+          {/* </Layout> */}
         </motion.div>
       </AnimatePresence>
     </ThemeProvider>

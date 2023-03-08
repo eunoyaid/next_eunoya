@@ -6,7 +6,14 @@ module.exports = {
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      transitionProperty: {
+        'height': 'height'
+      },
+      variants: {
+        height: ['responsive', 'hover', 'focus']
+    }
+    },
     colors: {
       primary: "#ED931E",
       darkPrimary: "#c28948",
@@ -15,7 +22,9 @@ module.exports = {
       header: "#3C3C3C",
       background: "#FCFEFE",
       border: "#FBC98F",
-      "border-card": "#F6F6F6",
+      "border-card": "#F8F8F8",
+      textPrimary: "#3C3C3C",
+      textSecondary: "#676565",
     },
     fontFamily: {
       sans: ["Poppins", "sans-serif"],
