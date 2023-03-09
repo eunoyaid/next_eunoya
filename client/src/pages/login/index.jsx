@@ -12,23 +12,27 @@ import nookies from "nookies";
 import { useRouter } from "next/router";
 import toast, { Toaster } from "react-hot-toast";
 import Head from "next/head";
+import { getProviders, signIn } from "next-auth/react";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "../api/auth/[...nextauth]";
+import icGoogle from "/public/icons/icGoogle.svg";
 
-export async function getServerSideProps(ctx) {
-  const cookies = nookies.get(ctx);
-  if (cookies.token) {
-    return {
-      redirect: {
-        destination: "/",
-      },
-    };
-  }
+// export async function getServerSideProps(ctx) {
+//   const cookies = nookies.get(ctx);
+//   if (cookies.token) {
+//     return {
+//       redirect: {
+//         destination: "/",
+//       },
+//     };
+//   }
 
-  return {
-    props: {},
-  };
-}
+//   return {
+//     props: {},
+//   };
+// }
 
-const LoginPage = () => {
+const LoginPage = ({ providers }) => {
   const Router = useRouter();
 
   const initialvalues = {
@@ -138,38 +142,47 @@ const LoginPage = () => {
                     or
                   </span>
                 </div>
-
-                <div className="btn-login  flex gap-2">
-                  <Link
-                    href={`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/connect/github`}
-                    className="w-full border border-border-card py-3 text-xs rounded-lg hover:bg-gray-100 transition  flex gap-3 justify-center items-center"
-                  >
-                    github
-                  </Link>
-                  <Link
-                    href={`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/connect/google`}
-                    className="w-full border border-border-card py-3 text-xs rounded-lg hover:bg-gray-100 transition  flex gap-3 justify-center items-center"
-                  >
-                    <Google className="text-red-500" />
-                  </Link>
-                  <button className="w-full border border-border-card py-3 text-xs rounded-lg hover:bg-gray-100 transition flex gap-3 justify-center items-center">
-                    <Facebook className="text-blue-500" />
-                  </button>
-                </div>
-                <div className="text-center text-xs mt-5 text-gray-500">
-                  belum punya akun?
-                  <Link href="/register" className="text-blue-500 ">
-                    {" "}
-                    daftar disini
-                  </Link>
-                </div>
               </>
             );
           }}
         </Formik>
+        {Object.values(providers).map((provider) => (
+          <div key={provider.name}>
+            <button
+              className="w-full border border-border-card py-2 text-xs rounded-lg hover:bg-gray-100 transition  flex gap-3 justify-center items-center"
+              onClick={() => signIn(provider.id)}
+            >
+              <Image src={icGoogle} height={35} width={35} alt="ic-google" />
+              masuk dengan {provider.name}
+            </button>
+          </div>
+        ))}
+        <div className="text-center text-xs mt-5 text-gray-500">
+          belum punya akun?
+          <Link href="/register" className="text-blue-500 ">
+            {" "}
+            daftar disini
+          </Link>
+        </div>
       </div>
     </div>
   );
 };
+export async function getServerSideProps(context) {
+  const session = await getServerSession(context.req, context.res, authOptions);
+
+  // If the user is already logged in, redirect.
+  // Note: Make sure not to redirect to the same page
+  // To avoid an infinite loop!
+  if (session) {
+    return { redirect: { destination: "/" } };
+  }
+
+  const providers = await getProviders();
+
+  return {
+    props: { providers: providers ?? [] },
+  };
+}
 
 export default LoginPage;

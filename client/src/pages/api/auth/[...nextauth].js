@@ -1,6 +1,5 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import FacebookProvider from "next-auth/providers/facebook";
 
 const options = {
   providers: [
@@ -8,11 +7,8 @@ const options = {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
-    FacebookProvider({
-      clientId: process.env.FACEBOOK_CLIENT_ID,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   database: process.env.NEXT_PUBLIC_DATABASE_URL,
   callbacks: {
     async session({ session, token, user }) {
@@ -31,6 +27,13 @@ const options = {
       }
       return token;
     },
+  },
+  pages: {
+    signIn: "/login",
+    signOut: "/auth/signout",
+    error: "/auth/error", // Error code passed in query string as ?error=
+    verifyRequest: "/auth/verify-request", // (used for check email message)
+    newUser: "/", // New users will be directed here on first sign in (leave the property out if not of interest)
   },
 };
 

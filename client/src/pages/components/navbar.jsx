@@ -1,18 +1,19 @@
-import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useCallback, useEffect } from "react";
 import icBrand from "/public/icons/icBrand.svg";
 import { useTheme } from "next-themes";
-import { Bag2, BoxRemove, Moon, ShoppingBag, ShoppingCart, Sun1 } from "iconsax-react";
+import { Bag2, BoxRemove, Moon, Sun1 } from "iconsax-react";
+
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const NavbarEunoya = () => {
   const { theme, setTheme } = useTheme();
   const [profile, setProfile] = useState();
   const [cart, setCart] = useState();
-  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const currentTheme = theme === "system " ? systemTheme : theme;
+  const { data: session } = useSession();
 
   useEffect(() => {
     setMounted(true);
@@ -23,7 +24,7 @@ const NavbarEunoya = () => {
   }
 
   return (
-    <div className=" bg-white dark:bg-gray-800 py-3 px-5 lg:py-4 lg:px-6 smooth-shadow fixed w-[80%]  z-20 mx-auto rounded-xl border border-gray-100  dark:border-gray-700 dark:shadow  mt-3 left-0 right-0">
+    <div className=" bg-white dark:bg-gray-800  dark:border-gray-700 dark:shadow py-3 px-5 lg:py-4 lg:px-6 smooth-shadow fixed w-[80%]  z-20 mx-auto rounded-xl border border-gray-100   mt-3 left-0 right-0">
       <div className="flex items-center justify-between   ">
         <div className="flex justify-start font-nunito ">
           <Link href="/">
@@ -82,60 +83,39 @@ const NavbarEunoya = () => {
               </div>
             </div>
             <div className="relative cursor-pointer profile inline-block text-left">
-              <img
+              <Image
                 onClick={() => setProfile(!profile)}
                 className="w-8 h-8 rounded-lg"
-                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
+                width={100}
+                height={100}
+                src={session?.user?.image}
+                priority
                 alt="Rounded avatar"
               />
 
               {profile && (
                 <div
-                  className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  className="absolute  mt-6 right-0 z-10  w-56 origin-top-right rounded-md bg-white border border-border-card  dark:bg-gray-800  dark:border-gray-700 dark:shadow "
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="menu-button"
-                  tabindex="-1"
+                  tabIndex="-1"
                 >
-                  <div className="py-1" role="none">
-                    <a
-                      href="#"
-                      className="text-gray-700 block px-4 py-2 text-sm"
-                      role="menuitem"
-                      tabindex="-1"
-                      id="menu-item-0"
-                    >
-                      Account settings
-                    </a>
-                    <a
-                      href="#"
-                      className="text-gray-700 block px-4 py-2 text-sm"
-                      role="menuitem"
-                      tabindex="-1"
-                      id="menu-item-1"
-                    >
-                      Support
-                    </a>
-                    <a
-                      href="#"
-                      className="text-gray-700 block px-4 py-2 text-sm"
-                      role="menuitem"
-                      tabindex="-1"
-                      id="menu-item-2"
-                    >
-                      License
-                    </a>
-
-                    <Link
-                      href={"/login"}
-                      className="text-gray-700 block w-full px-4 py-2 text-left text-sm"
-                      role="menuitem"
-                      tabindex="-1"
-                      id="menu-item-3"
-                    >
-                      Login
-                    </Link>
-                  </div>
+                  <ul className="p-2 ">
+                    <li className="text-gray-700 block px-4 py-2 capitalize text-sm rounded hover:bg-gray-200 dark:text-white dark:hover:bg-gray-50 dark:hover:text-header">
+                      Profile
+                    </li>
+                    <li className="text-gray-700 block px-4 py-2 capitalize text-sm rounded hover:bg-gray-200 dark:text-white dark:hover:bg-gray-50 dark:hover:text-header">
+                      Riwayat Transaksi
+                    </li>
+                    <li className="text-gray-700 block px-4 py-2 capitalize text-sm rounded hover:bg-gray-200 dark:text-white dark:hover:bg-gray-50 dark:hover:text-header">
+                      {session ? (
+                        <button onClick={() => signOut()}>Sign out</button>
+                      ) : (
+                        <button onClick={() => signIn()}>Sign in</button>
+                      )}
+                    </li>
+                  </ul>
                 </div>
               )}
             </div>
@@ -195,10 +175,7 @@ const NavbarEunoya = () => {
 
                       <div className="mt-8  overflow-y-scroll">
                         <div className="flow-root">
-                          <ul
-                            role="list"
-                            className=""
-                          >
+                          <ul role="list" className="">
                             <li className="flex mb-3  border border-border-card rounded-lg p-3">
                               <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
@@ -214,16 +191,13 @@ const NavbarEunoya = () => {
                                     <h3>
                                       <a href="#">Throwback Hip Bag</a>
                                     </h3>
-                                  
-                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500"/>
-                                  </div>                            
-                                  <p className="mt-1 ">
-                                 Rp 75000 
-                                    </p>
 
-                                </div>                   
+                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500" />
+                                  </div>
+                                  <p className="mt-1 ">Rp 75000</p>
+                                </div>
                               </div>
-                            </li>                     
+                            </li>
                             <li className="flex mb-3  border border-border-card rounded-lg p-3">
                               <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
@@ -239,16 +213,13 @@ const NavbarEunoya = () => {
                                     <h3>
                                       <a href="#">Throwback Hip Bag</a>
                                     </h3>
-                                  
-                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500"/>
-                                  </div>                            
-                                  <p className="mt-1 ">
-                                 Rp 75000 
-                                    </p>
 
-                                </div>                   
+                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500" />
+                                  </div>
+                                  <p className="mt-1 ">Rp 75000</p>
+                                </div>
                               </div>
-                            </li>                     
+                            </li>
                             <li className="flex mb-3  border border-border-card rounded-lg p-3">
                               <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
@@ -264,16 +235,13 @@ const NavbarEunoya = () => {
                                     <h3>
                                       <a href="#">Throwback Hip Bag</a>
                                     </h3>
-                                  
-                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500"/>
-                                  </div>                            
-                                  <p className="mt-1 ">
-                                 Rp 75000 
-                                    </p>
 
-                                </div>                   
+                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500" />
+                                  </div>
+                                  <p className="mt-1 ">Rp 75000</p>
+                                </div>
                               </div>
-                            </li>                     
+                            </li>
                             <li className="flex mb-3  border border-border-card rounded-lg p-3">
                               <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
@@ -289,16 +257,13 @@ const NavbarEunoya = () => {
                                     <h3>
                                       <a href="#">Throwback Hip Bag</a>
                                     </h3>
-                                  
-                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500"/>
-                                  </div>                            
-                                  <p className="mt-1 ">
-                                 Rp 75000 
-                                    </p>
 
-                                </div>                   
+                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500" />
+                                  </div>
+                                  <p className="mt-1 ">Rp 75000</p>
+                                </div>
                               </div>
-                            </li>                     
+                            </li>
                             <li className="flex mb-3  border border-border-card rounded-lg p-3">
                               <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
@@ -314,16 +279,13 @@ const NavbarEunoya = () => {
                                     <h3>
                                       <a href="#">Throwback Hip Bag</a>
                                     </h3>
-                                  
-                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500"/>
-                                  </div>                            
-                                  <p className="mt-1 ">
-                                 Rp 75000 
-                                    </p>
 
-                                </div>                   
+                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500" />
+                                  </div>
+                                  <p className="mt-1 ">Rp 75000</p>
+                                </div>
                               </div>
-                            </li>                     
+                            </li>
                             <li className="flex mb-3  border border-border-card rounded-lg p-3">
                               <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
@@ -339,16 +301,13 @@ const NavbarEunoya = () => {
                                     <h3>
                                       <a href="#">Throwback Hip Bag</a>
                                     </h3>
-                                  
-                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500"/>
-                                  </div>                            
-                                  <p className="mt-1 ">
-                                 Rp 75000 
-                                    </p>
 
-                                </div>                   
+                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500" />
+                                  </div>
+                                  <p className="mt-1 ">Rp 75000</p>
+                                </div>
                               </div>
-                            </li>                     
+                            </li>
                           </ul>
                         </div>
                       </div>

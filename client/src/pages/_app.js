@@ -1,12 +1,14 @@
 import "@/styles/globals.css";
-
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "next-themes";
 import { useRouter } from "next/router";
-
+import { SessionProvider } from "next-auth/react";
 import Layout from "./components/layout";
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   const router = useRouter();
   const variants = {
     hidden: { opacity: 0, y: 200, x: 0 },
@@ -24,9 +26,11 @@ export default function MyApp({ Component, pageProps }) {
           exit="exit" // Exit state (used later) to variants.exit
           transition={{ type: "linear" }} // Set the transition to linear
         >
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <SessionProvider session={session}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </SessionProvider>
         </motion.div>
       </AnimatePresence>
     </ThemeProvider>
