@@ -1,29 +1,38 @@
-import { Facebook, Instagram } from 'iconsax-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react'
-import { TbBrandTiktok } from 'react-icons/tb';
-import icBrandLg from "/public/icons/icBrandLg.svg";
+import { Facebook, Instagram } from "iconsax-react";
+import Link from "next/link";
+import React from "react";
+import { TbBrandTiktok } from "react-icons/tb";
 
 const Footer = () => {
   return (
-
-<footer className="w-[80%] mx-auto rounded-xl mb-10  p-4 bg-white border border-gray-100 sm:p-6 dark:bg-gray-900">
-  
-          <div className="sm:flex sm:items-center sm:justify-between">
-          <Image src={icBrandLg} alt={'brand-eunoya'} className='w-32' />
-        <span className="text-xs text-gray-500  sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" className="hover:underline">Eunoya</a>
+    <footer className="mt-20 mb-10 ">
+      <div className="flex items-center justify-center gap-4">
+        <span className="text-xs pr-5 border-r  border-gray-500 text-gray-500  sm:text-center dark:text-gray-400">
+          © 2023{" "}
+          <a href="https://eunoya.id/" className="hover:underline">
+            Eunoya
+          </a>
         </span>
-        <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-           <Link href='https://instagram.com'> <Instagram className='icons' /> </Link>
-           <Link href='https://instagram.com'> <Facebook className='icons' /> </Link>
-           <Link href='https://instagram.com'> <TbBrandTiktok className='icons' /> </Link>
-           
+        <div className="flex items-center justify-center gap-x-3">
+          <p className="text-xs text-gray-500">see us on :</p>
+          <div className="flex  space-x-3 justify-center items-center mt-0">
+            <Link href="https://instagram.com">
+              {" "}
+              <Instagram className="text-gray-500 w-5 h-5 hover:text-primary transition" />{" "}
+            </Link>
+            <Link href="https://instagram.com">
+              {" "}
+              <Facebook className="text-gray-500 w-5 h-5 hover:text-primary transition" />{" "}
+            </Link>
+            <Link href="https://instagram.com">
+              {" "}
+              <TbBrandTiktok className="text-gray-500 w-5 h-5 hover:text-primary transition" />{" "}
+            </Link>
+          </div>
         </div>
-    </div>
-</footer>
+      </div>
+    </footer>
+  );
+};
 
-  )
-}
-
-export default Footer
+export default Footer;
