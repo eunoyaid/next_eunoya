@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "next-themes";
 import { useRouter } from "next/router";
-import CustomCursor from "custom-cursor-react";
+import CustomCursor from 'custom-cursor-react';
 import "custom-cursor-react/dist/index.css";
 
 import Layout from "./components/layout";

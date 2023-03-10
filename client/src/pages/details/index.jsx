@@ -25,7 +25,7 @@ const Details = () => {
             </div>
             <div className="price flex gap-x-2 mt-2">
               <p>Rp 75000</p>
-              <p className="line-through text-gray-300">Rp 80000</p>
+              <p className="line-through text-gray-300 animate-pulse">Rp 80000</p>
             </div>
             <div className="flex justify-between">
               <p className="category ">website wedding invitation</p>
