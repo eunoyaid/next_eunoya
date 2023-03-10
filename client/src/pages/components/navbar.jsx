@@ -24,7 +24,7 @@ const NavbarEunoya = () => {
   }
 
   return (
-    <div className=" bg-white dark:bg-gray-800  dark:border-gray-700 dark:shadow py-3 px-5 lg:py-4 lg:px-6 smooth-shadow fixed w-[80%]  z-20 mx-auto rounded-xl border border-gray-100   mt-3 left-0 right-0">
+    <div className=" bg-white dark:bg-gray-800 dark:border-gray-800 dark:shadow py-3 px-5 lg:py-4 lg:px-6 smooth-shadow fixed w-[90%]  z-20 mx-auto rounded-xl border border-gray-100    mt-3 left-0 right-0">
       <div className="flex items-center justify-between   ">
         <div className="flex justify-start font-nunito ">
           <Link href="/">

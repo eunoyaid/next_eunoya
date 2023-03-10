@@ -4,7 +4,7 @@
 
 @layer base {
    body{
-        @apply scroll-smooth bg-background dark:bg-gray-900 transition-colors
+        @apply scroll-smooth bg-background dark:bg-gray-900 transition-colors text-textPrimary dark:text-secondary
     }
     .input {
      @apply bg-gray-50 mb-3 mt-1 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
@@ -38,7 +38,7 @@
     @apply mx-auto  max-w-2xl pt-24 pb-4 px-4 sm:py-14 sm:px-6 lg:max-w-3xl lg:pt-36 lg:px-8
 }
 .category{
-    @apply text-xs  text-primary my-2  dark:text-gray-800 py-1 px-2 inline-block bg-secondary dark:bg-gray-50 rounded-lg lowercase
+    @apply text-xs  text-primary my-2  dark:text-gray-800 py-1 px-2 inline-block bg-secondary  rounded-lg lowercase
 }
 
 

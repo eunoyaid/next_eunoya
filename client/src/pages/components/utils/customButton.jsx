@@ -7,7 +7,7 @@ const customButton = ({ children }) => {
       type="submit"
       className={` w-full bg-primary py-3  text-white rounded-lg  flex gap-3 justify-center`}
     >
-      {/* <ShoppingCart /> */}
+  
       {children}
     </button>
   );

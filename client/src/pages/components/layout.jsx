@@ -7,7 +7,7 @@ export default function Layout({ children }) {
     <>
       <NavbarEunoya />
       <main>{children}</main>
-      <Tabbar />
+      {/* <Tabbar /> */}
       <Footer/>
     </>
   );

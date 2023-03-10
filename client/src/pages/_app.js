@@ -2,8 +2,11 @@ import "@/styles/globals.css";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "next-themes";
 import { useRouter } from "next/router";
-import { SessionProvider } from "next-auth/react";
+import CustomCursor from "custom-cursor-react";
+import "custom-cursor-react/dist/index.css";
+
 import Layout from "./components/layout";
+import { SessionProvider } from "next-auth/react";
 
 export default function MyApp({
   Component,
@@ -28,6 +31,21 @@ export default function MyApp({
         >
           <SessionProvider session={session}>
             <Layout>
+              <CustomCursor
+                targets={[".link", ".your-css-selector"]}
+                customClass="cursor-circle"
+                dimensions={130}
+                fill="transparent"
+                strokeColor="#3C3C3C"
+                strokeWidth={2}
+                targetOpacity={1}
+                targetScale={15}
+                smoothness={{
+                  movement: 0.2,
+                  scale: 0.5,
+                  opacity: 0.8,
+                }}
+              />
               <Component {...pageProps} />
             </Layout>
           </SessionProvider>
