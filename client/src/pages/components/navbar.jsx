@@ -4,16 +4,31 @@ import React, { useState, useCallback, useEffect } from "react";
 import icBrand from "/public/icons/icBrand.svg";
 import { useTheme } from "next-themes";
 import { Bag2, BoxRemove, Moon, Sun1 } from "iconsax-react";
-
 import { useSession, signIn, signOut } from "next-auth/react";
+import { motion } from "framer-motion";
+
+const show = {
+  opacity: 1,
+  transition: { duration: 0.3 },
+  display: "block",
+};
+
+const hide = {
+  opacity: 0,
+  transition: { duration: 0.3 },
+  y: "50%",
+  transitionEnd: {
+    display: "none",
+  },
+};
 
 const NavbarEunoya = () => {
   const { theme, setTheme } = useTheme();
-  const [profile, setProfile] = useState();
   const [cart, setCart] = useState();
   const [mounted, setMounted] = useState(false);
   const currentTheme = theme === "system " ? systemTheme : theme;
   const { data: session } = useSession();
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -37,25 +52,25 @@ const NavbarEunoya = () => {
           <div className=" hidden space-x-6 lg:items-center  lg:flex menus">
             <Link
               href="/"
-              className="font-nunito text-lg  font-medium text-gray-500 dark:text-secondary hover:text-gray-900"
+              className="b font-nunito text-lg  font-medium text-gray-500 dark:text-secondary hover:text-gray-900"
             >
               Home
             </Link>
             <Link
               href="/products"
-              className="font-nunito text-lg font-medium text-gray-500 dark:text-secondary hover:text-gray-900"
+              className="b font-nunito text-lg font-medium text-gray-500 dark:text-secondary hover:text-gray-900"
             >
               Products
             </Link>
             <Link
               href="/blogs"
-              className="font-nunito text-lg font-medium text-gray-500 dark:text-secondary hover:text-gray-900"
+              className="b font-nunito text-lg font-medium text-gray-500 dark:text-secondary hover:text-gray-900"
             >
               Blogs
             </Link>
             <Link
               href="/wedding"
-              className="font-nunito text-lg font-medium  text-gray-500 dark:text-secondary hover:text-gray-900"
+              className="b font-nunito text-lg font-medium  text-gray-500 dark:text-secondary hover:text-gray-900"
             >
               Wedding
             </Link>
@@ -83,41 +98,44 @@ const NavbarEunoya = () => {
               </div>
             </div>
             <div className="relative cursor-pointer profile inline-block text-left">
-              <Image
-                onClick={() => setProfile(!profile)}
-                className="w-8 h-8 rounded-lg"
-                width={100}
-                height={100}
-                src={session?.user?.image}
-                priority
-                alt="Rounded avatar"
-              />
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setIsVisible(!isVisible)}
+              >
+                <Image
+                  className="w-8 h-8 rounded-lg"
+                  width={100}
+                  height={100}
+                  src={session?.user?.image}
+                  priority
+                  alt="Rounded avatar"
+                />
+              </motion.button>
 
-              {profile && (
-                <div
-                  className="absolute  mt-6 right-0 z-10  w-56 origin-top-right rounded-md bg-white border border-border-card  dark:bg-gray-800  dark:border-gray-700 dark:shadow "
-                  role="menu"
-                  aria-orientation="vertical"
-                  aria-labelledby="menu-button"
-                  tabIndex="-1"
-                >
-                  <ul className="p-2 ">
-                    <li className="text-gray-700 block px-4 py-2 capitalize text-sm rounded hover:bg-gray-200 dark:text-white dark:hover:bg-gray-50 dark:hover:text-header">
-                      Profile
-                    </li>
-                    <li className="text-gray-700 block px-4 py-2 capitalize text-sm rounded hover:bg-gray-200 dark:text-white dark:hover:bg-gray-50 dark:hover:text-header">
-                      Riwayat Transaksi
-                    </li>
-                    <li className="text-gray-700 block px-4 py-2 capitalize text-sm rounded hover:bg-gray-200 dark:text-white dark:hover:bg-gray-50 dark:hover:text-header">
-                      {session ? (
-                        <button onClick={() => signOut()}>Sign out</button>
-                      ) : (
-                        <button onClick={() => signIn()}>Sign in</button>
-                      )}
-                    </li>
-                  </ul>
-                </div>
-              )}
+              <motion.div
+                className="absolute  mt-6 right-0 z-10  w-56 origin-top-right rounded-md bg-white border border-border-card  dark:bg-gray-800  dark:border-gray-700 dark:shadow "
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="menu-button"
+                tabIndex="-1"
+                animate={isVisible ? show : hide}
+              >
+                <ul className="p-2 ">
+                  <li className="text-gray-700 block px-4 py-2 capitalize text-sm rounded hover:bg-gray-200 dark:text-white dark:hover:bg-gray-50 dark:hover:text-header">
+                    Profile
+                  </li>
+                  <li className="text-gray-700 block px-4 py-2 capitalize text-sm rounded hover:bg-gray-200 dark:text-white dark:hover:bg-gray-50 dark:hover:text-header">
+                    Riwayat Transaksi
+                  </li>
+                  <li className="text-gray-700 block px-4 py-2 capitalize text-sm rounded hover:bg-gray-200 dark:text-white dark:hover:bg-gray-50 dark:hover:text-header">
+                    {session ? (
+                      <button onClick={() => signOut()}>Sign out</button>
+                    ) : (
+                      <button onClick={() => signIn()}>Sign in</button>
+                    )}
+                  </li>
+                </ul>
+              </motion.div>
             </div>
           </div>
         </nav>

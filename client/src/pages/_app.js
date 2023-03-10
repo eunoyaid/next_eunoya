@@ -32,17 +32,17 @@ export default function MyApp({
           <SessionProvider session={session}>
             <Layout>
               <CustomCursor
-                targets={[".link", ".your-css-selector"]}
+                targets={[".link", ".button"]}
                 customClass="cursor-circle"
-                dimensions={130}
-                fill="transparent"
-                strokeColor="#3C3C3C"
-                strokeWidth={2}
-                targetOpacity={1}
-                targetScale={15}
+                dimensions={40}
+                fill="#000"
+                strokeColor=""
+                strokeWidth={0}
+                targetOpacity={.3}
+                targetScale={4}
                 smoothness={{
                   movement: 0.2,
-                  scale: 0.5,
+                  scale: 0.3,
                   opacity: 0.8,
                 }}
               />

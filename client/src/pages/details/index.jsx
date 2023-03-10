@@ -32,7 +32,9 @@ const Details = () => {
             <button className="text-xs hover:underline cursor-pointer flex items-center"> <Eye className="mr-1 w-5 h-5 "/> lihat tema</button>
             </div>
             <div className="add-shop flex  mx-auto mt-5  gap-3">
-              <CustomButton> Order Now</CustomButton>
+              <CustomButton
+              
+              > Order Now</CustomButton>
               <BtnCart />
             </div>
           </div>

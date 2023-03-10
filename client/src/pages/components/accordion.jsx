@@ -40,12 +40,12 @@ export default function AccordionCustom() {
   const [open, setOpen] = useState();
 
   return (
-    <div>
+    <iv>
       <Accordion transition transitionTimeout={200}>
         <AccordionItem
           icon={<Box className="mr-2" />}
           header="Rincian produk"
-          initialEntered
+ 
         >
           <div className="mb-3">
             <h5 className="text-textPrimary dark:text-secondary capitalize mb-2 text-sm">
@@ -342,6 +342,6 @@ export default function AccordionCustom() {
           </ul>
         </AccordionItem>
       </Accordion>
-    </div>
+    </iv>
   );
 }
