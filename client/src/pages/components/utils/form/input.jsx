@@ -20,8 +20,4 @@ const Input = (props) => {
     </div>
   );
 };
-<<<<<<< HEAD
 export default Input;
-=======
-export default Input
->>>>>>> ddb3bc496c5f63037f72c574736e0ebebe79a27f

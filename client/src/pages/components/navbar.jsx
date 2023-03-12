@@ -3,9 +3,10 @@ import Link from "next/link";
 import React, { useState, useCallback, useEffect } from "react";
 import icBrand from "/public/icons/icBrand.svg";
 import { useTheme } from "next-themes";
-import { Bag2, BoxRemove, Moon, Sun1 } from "iconsax-react";
+import { Bag2, CloseCircle, Moon, Sun1 } from "iconsax-react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { motion } from "framer-motion";
+import { Checkbox, Select } from "flowbite-react";
 
 const show = {
   opacity: 1,
@@ -29,14 +30,7 @@ const NavbarEunoya = () => {
   const currentTheme = theme === "system " ? systemTheme : theme;
   const { data: session } = useSession();
   const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
+  const [qty, setQty] = useState(0);
 
   return (
     <div className=" bg-white dark:bg-gray-800 dark:border-gray-800 dark:shadow py-3 px-5 lg:py-4 lg:px-6 smooth-shadow fixed w-[90%]  z-20 mx-auto rounded-xl border border-gray-100    mt-3 left-0 right-0">
@@ -143,27 +137,20 @@ const NavbarEunoya = () => {
 
       {/* carts */}
       {cart && (
-        <div
-          className=" absolute z-50"
-          aria-labelledby="slide-over-title"
-          role="dialog"
-          aria-modal="true"
-        >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-
-          <div className="fixed inset-0 overflow-hidden">
-            <div className="absolute inset-0 overflow-hidden">
+        <div className=" fixed z-50">
+          <div className="fixed inset-0 bg-gray-500  bg-opacity-75 transition-opacity "></div>
+            <div className=" inset-0 overflow-hidden">
               <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
                 <div className="pointer-events-auto w-screen max-w-md">
                   <div className="flex flex-col h-full bg-white shadow-xl">
-                    <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
+                    <div className="flex-1 overflow-y-scroll py-6 px-4 sm:px-6">
                       <div className="flex items-start justify-between">
-                        <h2
-                          className="text-lg font-nunito font-semibold text-gray-900"
+                        <p
+                          className="text-lg font-nunito  text-gray-900"
                           id="slide-over-title"
                         >
                           Keranjang Belanja
-                        </h2>
+                        </p>
                         <div className="ml-3 flex h-7 items-center">
                           <button
                             onClick={() => setCart(!cart)}
@@ -190,181 +177,259 @@ const NavbarEunoya = () => {
                           </button>
                         </div>
                       </div>
-
-                      <div className="mt-8  overflow-y-scroll">
-                        <div className="flow-root">
-                          <ul role="list" className="">
-                            <li className="flex mb-3  border border-border-card rounded-lg p-3">
-                              <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
+                      <div className="mt-8  ">
+                        <ul>
+                          <li className="flex mb-3 justify-between  items-center border border-border-card rounded-lg p-3">
+                            <div className="desc flex gap-x-3 items-center">
+                              <Checkbox />
+                              <div className=" w-14 h-14 bg-gray-300 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
                                   src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                                   alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                                   className="h-full w-full object-cover object-center"
                                 />
                               </div>
+                              <div className=" flex  flex-col">
+                                <p className="flex justify-between   text-sm">
+                                  Throwback Hip Bag
+                                </p>
 
-                              <div className="ml-4 flex flex-1 flex-col">
-                                <div>
-                                  <div className="flex justify-between text-base font-medium text-gray-900">
-                                    <h3>
-                                      <a href="#">Throwback Hip Bag</a>
-                                    </h3>
-
-                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500" />
-                                  </div>
-                                  <p className="mt-1 ">Rp 75000</p>
+                                <p className="mt-1 text-xs">Rp 75000</p>
+                                <div className="btns flex gap-x-3 items-center text-xs mt-2">
+                                  <button
+                                    onClick={() =>
+                                      setQty(qty === 0 ? qty + 0 : qty - 1)
+                                    }
+                                    className="border rounded bg-gray-200  p-1"
+                                  >
+                                    -
+                                  </button>{" "}
+                                  {qty}{" "}
+                                  <button
+                                    onClick={() => setQty(qty + 1)}
+                                    className="border rounded bg-gray-200 p-1"
+                                  >
+                                    +
+                                  </button>
                                 </div>
                               </div>
-                            </li>
-                            <li className="flex mb-3  border border-border-card rounded-lg p-3">
-                              <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
+                            </div>
+
+                            <CloseCircle className="cursor-pointer text-gray-400 hover:text-red-500" />
+                          </li>
+                          <li className="flex mb-3 justify-between  items-center border border-border-card rounded-lg p-3">
+                            <div className="desc flex gap-x-3 items-center">
+                              <Checkbox />
+                              <div className=" w-14 h-14 bg-gray-300 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
                                   src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                                   alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                                   className="h-full w-full object-cover object-center"
                                 />
                               </div>
+                              <div className=" flex  flex-col">
+                                <p className="flex justify-between   text-sm">
+                                  Throwback Hip Bag
+                                </p>
 
-                              <div className="ml-4 flex flex-1 flex-col">
-                                <div>
-                                  <div className="flex justify-between text-base font-medium text-gray-900">
-                                    <h3>
-                                      <a href="#">Throwback Hip Bag</a>
-                                    </h3>
-
-                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500" />
-                                  </div>
-                                  <p className="mt-1 ">Rp 75000</p>
+                                <p className="mt-1 text-xs">Rp 75000</p>
+                                <div className="btns flex gap-x-3 items-center text-xs mt-2">
+                                  <button
+                                    onClick={() =>
+                                      setQty(qty === 0 ? qty + 0 : qty - 1)
+                                    }
+                                    className="border rounded bg-gray-200  p-1"
+                                  >
+                                    -
+                                  </button>{" "}
+                                  {qty}{" "}
+                                  <button
+                                    onClick={() => setQty(qty + 1)}
+                                    className="border rounded bg-gray-200 p-1"
+                                  >
+                                    +
+                                  </button>
                                 </div>
                               </div>
-                            </li>
-                            <li className="flex mb-3  border border-border-card rounded-lg p-3">
-                              <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
+                            </div>
+
+                            <CloseCircle className="cursor-pointer text-gray-400 hover:text-red-500" />
+                          </li>
+                          <li className="flex mb-3 justify-between  items-center border border-border-card rounded-lg p-3">
+                            <div className="desc flex gap-x-3 items-center">
+                              <Checkbox />
+                              <div className=" w-14 h-14 bg-gray-300 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
                                   src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                                   alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                                   className="h-full w-full object-cover object-center"
                                 />
                               </div>
+                              <div className=" flex  flex-col">
+                                <p className="flex justify-between   text-sm">
+                                  Throwback Hip Bag
+                                </p>
 
-                              <div className="ml-4 flex flex-1 flex-col">
-                                <div>
-                                  <div className="flex justify-between text-base font-medium text-gray-900">
-                                    <h3>
-                                      <a href="#">Throwback Hip Bag</a>
-                                    </h3>
-
-                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500" />
-                                  </div>
-                                  <p className="mt-1 ">Rp 75000</p>
+                                <p className="mt-1 text-xs">Rp 75000</p>
+                                <div className="btns flex gap-x-3 items-center text-xs mt-2">
+                                  <button
+                                    onClick={() =>
+                                      setQty(qty === 0 ? qty + 0 : qty - 1)
+                                    }
+                                    className="border rounded bg-gray-200  p-1"
+                                  >
+                                    -
+                                  </button>{" "}
+                                  {qty}{" "}
+                                  <button
+                                    onClick={() => setQty(qty + 1)}
+                                    className="border rounded bg-gray-200 p-1"
+                                  >
+                                    +
+                                  </button>
                                 </div>
                               </div>
-                            </li>
-                            <li className="flex mb-3  border border-border-card rounded-lg p-3">
-                              <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
+                            </div>
+
+                            <CloseCircle className="cursor-pointer text-gray-400 hover:text-red-500" />
+                          </li>
+                          <li className="flex mb-3 justify-between  items-center border border-border-card rounded-lg p-3">
+                            <div className="desc flex gap-x-3 items-center">
+                              <Checkbox />
+                              <div className=" w-14 h-14 bg-gray-300 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
                                   src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                                   alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                                   className="h-full w-full object-cover object-center"
                                 />
                               </div>
+                              <div className=" flex  flex-col">
+                                <p className="flex justify-between   text-sm">
+                                  Throwback Hip Bag
+                                </p>
 
-                              <div className="ml-4 flex flex-1 flex-col">
-                                <div>
-                                  <div className="flex justify-between text-base font-medium text-gray-900">
-                                    <h3>
-                                      <a href="#">Throwback Hip Bag</a>
-                                    </h3>
-
-                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500" />
-                                  </div>
-                                  <p className="mt-1 ">Rp 75000</p>
+                                <p className="mt-1 text-xs">Rp 75000</p>
+                                <div className="btns flex gap-x-3 items-center text-xs mt-2">
+                                  <button
+                                    onClick={() =>
+                                      setQty(qty === 0 ? qty + 0 : qty - 1)
+                                    }
+                                    className="border rounded bg-gray-200  p-1"
+                                  >
+                                    -
+                                  </button>{" "}
+                                  {qty}{" "}
+                                  <button
+                                    onClick={() => setQty(qty + 1)}
+                                    className="border rounded bg-gray-200 p-1"
+                                  >
+                                    +
+                                  </button>
                                 </div>
                               </div>
-                            </li>
-                            <li className="flex mb-3  border border-border-card rounded-lg p-3">
-                              <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
+                            </div>
+
+                            <CloseCircle className="cursor-pointer text-gray-400 hover:text-red-500" />
+                          </li>
+                          <li className="flex mb-3 justify-between  items-center border border-border-card rounded-lg p-3">
+                            <div className="desc flex gap-x-3 items-center">
+                              <Checkbox />
+                              <div className=" w-14 h-14 bg-gray-300 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
                                   src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                                   alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                                   className="h-full w-full object-cover object-center"
                                 />
                               </div>
+                              <div className=" flex  flex-col">
+                                <p className="flex justify-between   text-sm">
+                                  Throwback Hip Bag
+                                </p>
 
-                              <div className="ml-4 flex flex-1 flex-col">
-                                <div>
-                                  <div className="flex justify-between text-base font-medium text-gray-900">
-                                    <h3>
-                                      <a href="#">Throwback Hip Bag</a>
-                                    </h3>
-
-                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500" />
-                                  </div>
-                                  <p className="mt-1 ">Rp 75000</p>
+                                <p className="mt-1 text-xs">Rp 75000</p>
+                                <div className="btns flex gap-x-3 items-center text-xs mt-2">
+                                  <button
+                                    onClick={() =>
+                                      setQty(qty === 0 ? qty + 0 : qty - 1)
+                                    }
+                                    className="border rounded bg-gray-200  p-1"
+                                  >
+                                    -
+                                  </button>{" "}
+                                  {qty}{" "}
+                                  <button
+                                    onClick={() => setQty(qty + 1)}
+                                    className="border rounded bg-gray-200 p-1"
+                                  >
+                                    +
+                                  </button>
                                 </div>
                               </div>
-                            </li>
-                            <li className="flex mb-3  border border-border-card rounded-lg p-3">
-                              <div className=" w-14 h-14 flex-shrink-0 overflow-hidden rounded-lg ">
+                            </div>
+
+                            <CloseCircle className="cursor-pointer text-gray-400 hover:text-red-500" />
+                          </li>
+                          <li className="flex mb-3 justify-between  items-center border border-border-card rounded-lg p-3">
+                            <div className="desc flex gap-x-3 items-center">
+                              <Checkbox />
+                              <div className=" w-14 h-14 bg-gray-300 flex-shrink-0 overflow-hidden rounded-lg ">
                                 <img
                                   src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                                   alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                                   className="h-full w-full object-cover object-center"
                                 />
                               </div>
+                              <div className=" flex  flex-col">
+                                <p className="flex justify-between   text-sm">
+                                  Throwback Hip Bag
+                                </p>
 
-                              <div className="ml-4 flex flex-1 flex-col">
-                                <div>
-                                  <div className="flex justify-between text-base font-medium text-gray-900">
-                                    <h3>
-                                      <a href="#">Throwback Hip Bag</a>
-                                    </h3>
-
-                                    <BoxRemove className="cursor-pointer text-gray-400 hover:text-red-500" />
-                                  </div>
-                                  <p className="mt-1 ">Rp 75000</p>
+                                <p className="mt-1 text-xs">Rp 75000</p>
+                                <div className="btns flex gap-x-3 items-center text-xs mt-2">
+                                  <button
+                                    onClick={() =>
+                                      setQty(qty === 0 ? qty + 0 : qty - 1)
+                                    }
+                                    className="border rounded bg-gray-200  p-1"
+                                  >
+                                    -
+                                  </button>{" "}
+                                  {qty}{" "}
+                                  <button
+                                    onClick={() => setQty(qty + 1)}
+                                    className="border rounded bg-gray-200 p-1"
+                                  >
+                                    +
+                                  </button>
                                 </div>
                               </div>
-                            </li>
-                          </ul>
-                        </div>
+                            </div>
+
+                            <CloseCircle className="cursor-pointer text-gray-400 hover:text-red-500" />
+                          </li>
+                        </ul>
                       </div>
                     </div>
 
                     <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-900">
-                        <p>Subtotal</p>
-                        <p>$262.00</p>
+                        <p>Total Harga</p>
+                        <p>Rp 262000</p>
                       </div>
-                      <p className="mt-0.5 text-sm text-gray-500">
-                        Shipping and taxes calculated at checkout.
-                      </p>
+
                       <div className="mt-6">
                         <a
                           href="#"
-                          className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                          className="flex items-center justify-center rounded-md border border-transparent bg-primary px-6 py-3 text-base  text-white shadow-sm"
                         >
                           Checkout
                         </a>
-                      </div>
-                      <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                        <p>
-                          or
-                          <button
-                            type="button"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                          >
-                            Continue Shopping
-                            <span aria-hidden="true"> &rarr;</span>
-                          </button>
-                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
         </div>
       )}
     </div>

@@ -2452,6 +2452,13 @@ form-ratings@^0.3.0:
   resolved "https://registry.yarnpkg.com/form-ratings/-/form-ratings-0.3.0.tgz#18b55b1bb03da1504b4797ac292f60e3191c5404"
   integrity sha512-CdbeYmLn5o3OihOYLZm7QdXYPMOn3BGkqdlILpPRuKL8Ip++HVHWJNouCkHc22Q3u6xBKozw7mslcwE/HxFh5g==
 
+formik-file-and-image-input@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/formik-file-and-image-input/-/formik-file-and-image-input-0.0.6.tgz#a14232d2265c8f4ad439d629b892cf8895a336f8"
+  integrity sha512-0PzKOcQeNFVZjiDXiEVh50EAi6YQNfQOXClZhGj7iAMZOEEyUm10wbPyg+XYbiTIj1ZI4m/Uy0I5tR7sk+M2Gw==
+  dependencies:
+    react-dom "^17.0.2"
+
 formik@^2.2.9:
   version "2.2.9"
   resolved "https://registry.npmjs.org/formik/-/formik-2.2.9.tgz"
@@ -4341,6 +4348,15 @@ react-dom@18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
+react-dom@^17.0.2:
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
+  integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    scheduler "^0.20.2"
+
 react-easy-swipe@^0.0.23:
   version "0.0.23"
   resolved "https://registry.yarnpkg.com/react-easy-swipe/-/react-easy-swipe-0.0.23.tgz#67bea5a92d75ae23e24c99771cb36e32ecc5a4fa"
@@ -4719,6 +4735,14 @@ safe-regex-test@^1.0.0:
   version "2.1.2"
   resolved "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
+
+scheduler@^0.20.2:
+  version "0.20.2"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.20.2.tgz#4baee39436e34aa93b4874bddcbf0fe8b8b50e91"
+  integrity sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
 
 scheduler@^0.23.0:
   version "0.23.0"

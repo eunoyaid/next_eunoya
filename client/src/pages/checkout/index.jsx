@@ -1,14 +1,47 @@
-import { FileInput, Label, Tabs } from "flowbite-react";
-import { Card, CardPos, CloseCircle, Warning2 } from "iconsax-react";
+import { FileInput, Label, Spinner, Tabs } from "flowbite-react";
+import { Card, CardPos, CloseCircle, Login, Warning2 } from "iconsax-react";
 import Image from "next/image";
 import React from "react";
 import CustomButton from "@/pages/components/utils/customButton";
+import * as Yup from "yup";
+import { Form, Formik } from "formik";
 
 const onDelete = () => {
   console.log("terhpus");
 };
 
+const onSubmit = async (values, actions, ctx) => {
+  console.log("test");
+  try {
+    // const response = await axios.post(
+    //   `${process.env.NEXT_PUBLIC_API_URL}/auth/local`,
+    //   values
+    // );
+    // const cookies = nookies.get(ctx);
+    // {
+    //   response.data.jwt &&
+    //     nookies.set(ctx, "token", response.data.jwt, {
+    //       maxAge: 30 * 24 * 60 * 60,
+    //       path: "/",
+    //     });
+    //   Router.replace("/");
+    //   return { cookies };
+    // }
+  } catch (error) {
+    const ToastError = () =>
+      toast.error("username atau password mungkin salah");
+    ToastError();
+  }
+};
+
 const Checkout = () => {
+  const initialvalues = {
+    image: "",
+  };
+
+  const validationSchema = Yup.object({
+    image: Yup.string().required("uups, image di perlukan disini "),
+  });
   return (
     <div className="container max-w-3xl">
       <p className="text capitalize font-nunito text-textPrimary dark:text-secondary flex gap-x-2 items-center">
@@ -104,9 +137,14 @@ const Checkout = () => {
       </div>
 
       <div className="checkout-detail border dark:border-gray-800  mt-4 border-border-card rounded-xl p-4 bg-white dark:bg-gray-800">
-        <p className="text-sm capitalize text-textPrimary dark:text-white">
-          rincian pembayaran
-        </p>
+        <div className="flex justify-between">
+          <p className="text-sm capitalize text-textPrimary dark:text-white">
+            rincian pembayaran
+          </p>
+          <p className="text-sm uppercase text-primary dark:text-white">
+            invoice#1243
+          </p>
+        </div>
         <ul className="product-list">
           <li className="flex justify-between text-xs mt-3 mb-2 dark:text-secondary text-textSecondary">
             <p className="title">Floral</p>
@@ -141,8 +179,9 @@ const Checkout = () => {
             </div>
             <p className="text-xs">
               setelah melakukan pembayaran harap upload bukti transfer disni
+              sertakan nomer invoice pada keterangan
             </p>
-            <div className="flex items-center justify-center mt-3 w-full">
+            {/* <div className="flex items-center justify-center mt-3 w-full">
               <label
                 htmlFor="dropzone-file"
                 className="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
@@ -176,7 +215,45 @@ const Checkout = () => {
             </div>
             <div className="mt-4">
               <CustomButton> konfirmasi</CustomButton>
-            </div>
+            </div> */}
+
+            <Formik
+              initialValues={initialvalues}
+              validationSchema={validationSchema}
+              onSubmit={onSubmit}
+            >
+              {(props) => {
+                const { isSubmitting } = props;
+                return (
+                  <>
+                    <Form>
+                      {/* <FormikControl
+                        control="input"
+                        type="email"
+                        label="email"
+                        name="identifier"
+                      /> */}
+                      <input type="file" name="image" onChange={(e) => setFieldValue('image', e.target.files[0])} />
+                      <div className="btn-login mt-8">
+                        <CustomButton className="mt-10 w-full" type="submit">
+                          {isSubmitting ? (
+                            <Spinner
+                              className="mr-2"
+                              aria-label="Default status example"
+                            />
+                          ) : (
+                            <span className="flex  text-sm items-center">
+                              <Login className="mr-2 " />
+                              submit
+                            </span>
+                          )}
+                        </CustomButton>
+                      </div>
+                    </Form>
+                  </>
+                );
+              }}
+            </Formik>
           </Tabs.Item>
           <Tabs.Item title="Automatis">
             <div className="flex gap-x-2">

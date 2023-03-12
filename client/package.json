@@ -23,6 +23,7 @@
     "flowbite-react": "^0.3.7",
     "form-ratings": "^0.3.0",
     "formik": "^2.2.9",
+    "formik-file-and-image-input": "^0.0.6",
     "framer-motion": "^9.0.1",
     "gsap": "^3.11.4",
     "iconsax-react": "^0.0.8",
